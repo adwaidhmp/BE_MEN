@@ -1,5 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { WishlistContext } from "./contexts/wishlistcontext";
+import { CartContext } from "./contexts/cartcontext";
+import { OrderContext } from "./contexts/ordercontext";
+import { useAuth } from "./contexts/Authcontext";
 
 
 function Homepage() {
@@ -8,8 +12,13 @@ function Homepage() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPrice, setSelectedPrice] = useState("all");
- const navigate = useNavigate()
+  const navigate = useNavigate()
+  const { wishlist, toggleWishlist } = useContext(WishlistContext);
+  const { cart, addToCart } = useContext(CartContext);
+  const { placeOrder } = useContext(OrderContext);
+  const { user } = useAuth();
 
+console.log(cart)
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -127,26 +136,75 @@ useEffect(() => {
   </div>
 </div>
 
-      {/* All products grid */}
+      {/* Product Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 py-1">
-        {filteredProducts.map((product) =>(<div key={product.id} 
-        onClick={() => navigate(`/product/${product.id}`)}
-        className="bg-white p-4 rounded-lg shadow cursor-pointer hover:shadow-lg shadow-gray-400 transition">
-            <img
-              src={product.image[0]}
-              alt={product.name}
-              className="h-40 w-full object-cover rounded mb-2"
-            />
-            <h2 className="font-semibold text-lg">{product.brand}</h2>
-            <p className="text-gray-600">{product.category}</p>
-            <p className="text-gray-800 font-bold">${product.price}</p>
-            <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
-          </div>
-        ))}
+        {filteredProducts.map((product) => {
+          const isInWishlist = wishlist.some((item) => item.id === product.id);
+
+          return (
+            <div
+              key={product.id}
+              onClick={() => navigate(`/product/${product.id}`)}
+              className="relative bg-white p-4 rounded-lg shadow cursor-pointer hover:shadow-lg shadow-gray-400 transition"
+            >
+              {/* Heart Button */}
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (!user) {
+                  navigate("/login");
+                  return;
+                  }     
+                  toggleWishlist(product);
+                }}
+                className="absolute top-2 right-2 text-xl"
+              >
+                {isInWishlist ? "❤️" : "🤍"}
+              </div>
+
+              <img
+                src={product.image[0]}
+                alt={product.name}
+                className="h-40 w-full object-cover rounded mb-2"
+              />
+              <h2 className="font-semibold text-lg">{product.brand}</h2>
+              <p className="text-gray-600">{product.category}</p>
+              <p className="text-gray-800 font-bold">${product.price}</p>
+              <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
+                <button
+                  onClick={(e) => {
+                  e.stopPropagation();
+                  if (!user) {
+                  navigate("/login");
+                  return;
+                  }
+                  addToCart(product);
+                   }}
+                  className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
+                  >
+                Add to Cart
+                </button>
+
+                <button
+              onClick={(e) => {
+                e.stopPropagation();
+                if (!user) {
+                  navigate("/login");
+                  return;
+                  }
+                placeOrder(product); 
+                navigate("/orders"); 
+                }}
+               className=" relative left-12 mt-4 bg-black text-white py-1 px-3 rounded hover:text-green-400"
+                   >
+               Buy Now
+            </button>
+
+            </div>
+          );
+        })}
       </div>
     </div>
-
-
   );
 }
 
