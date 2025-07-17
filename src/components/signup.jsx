@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 function Signup() {
   const navigate = useNavigate();
@@ -31,12 +32,11 @@ function Signup() {
         const res = await axios.get("http://localhost:3001/users");
         const userExists = res.data.find((u) => u.email === values.email);
         if (userExists) {
-          alert("User already exists. Please login.");
+          toast.success("You have already have account")
           return;
         }
-
-        await axios.post("http://localhost:3001/users", {...values,role:"user"});
-        alert("Signup successful!");
+        await axios.post("http://localhost:3001/users", {...values,role:"user",wishlist:[],cart:[],order:[]});
+        toast.success("signed up succesfully")
         navigate("/login");
       } catch (error) {
         console.error("Signup error:", error);

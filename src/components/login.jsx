@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/Authcontext";
+import { toast } from "react-toastify";
 
 
 function Login() {
@@ -21,17 +22,19 @@ function Login() {
       const user = res.data.find(
         (u) => u.email === form.email && u.password === form.password
       );
+      console.log(user)
 
       if (user) {
         setUser(user); 
         sessionStorage.setItem("user", JSON.stringify(user));
-        alert("Login successful!");
+        toast.success("Login successful!");
         navigate("/", { replace: true });
       } else {
-        alert("Invalid email or password");
+        toast.error("Invalid email or password");
       }
     } catch (error) {
       console.error("Login error:", error);
+        toast.error("An error occurred while logging in");
     }
   };
 

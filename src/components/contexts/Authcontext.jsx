@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     return storedUser ? JSON.parse(storedUser) : null;
   });
 
-  // Keep sessionStorage in sync when user logs in
+  
   useEffect(() => {
     if (user) {
       sessionStorage.setItem("user", JSON.stringify(user));

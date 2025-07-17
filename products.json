@@ -989,43 +989,153 @@
   ],
   "users": [
     {
-      "id": "7f25",
-      "name": "sd",
-      "email": "as@gmail.com",
-      "password": "as@gmail.com"
-    },
-    {
-      "id": "e417",
-      "name": "addd",
+      "id": "a619",
+      "name": "addddd",
       "email": "addddd@gmail.com",
-      "password": "addddd@gmail.com"
+      "password": "addddd@gmail.com",
+      "role": "user",
+      "wishlist": [],
+      "cart": [],
+      "order": []
     },
     {
-      "id": "99fd",
-      "name": "saddw",
-      "email": "as@sf",
-      "password": "asdfbf"
+      "id": "0fdb",
+      "name": "ad",
+      "email": "ad@gmail.com",
+      "password": "ad@gmail.com",
+      "role": "user",
+      "wishlist": [
+        "1",
+        "2",
+        "3"
+      ],
+      "cart": [
+        {
+          "id": "2",
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "quantity": 1
+        },
+        {
+          "id": "7",
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "quantity": 1
+        }
+      ],
+      "order": [
+        {
+          "id": "2",
+          "orderId": "1752727741851-0",
+          "date": "7/17/2025, 10:19:01 AM"
+        },
+        {
+          "id": "3",
+          "orderId": "1752727741851-1",
+          "date": "7/17/2025, 10:19:01 AM"
+        },
+        {
+          "id": "4",
+          "orderId": "1752727741851-2",
+          "date": "7/17/2025, 10:19:01 AM"
+        },
+        {
+          "id": "7",
+          "orderId": "1752727741851-3",
+          "date": "7/17/2025, 10:19:01 AM"
+        },
+        {
+          "id": "6",
+          "orderId": "1752727741851-4",
+          "date": "7/17/2025, 10:19:01 AM"
+        },
+        {
+          "id": "3",
+          "orderId": "1752727749436-0",
+          "date": "7/17/2025, 10:19:09 AM"
+        },
+        {
+          "id": "3",
+          "orderId": "1752727756378-0",
+          "date": "7/17/2025, 10:19:16 AM"
+        }
+      ]
     },
     {
-      "id": "15f5",
-      "name": "addd",
-      "email": "adddddss@gmail.com",
-      "password": "adddddss@gmail.com",
-      "role": "user"
+      "id": "9b85",
+      "name": "Adwaith",
+      "email": "adwaidh7727@gmail.com",
+      "password": "adwaidh7727@gmail.com",
+      "role": "user",
+      "wishlist": [
+        "2",
+        "3",
+        "1",
+        "4",
+        "6"
+      ],
+      "cart": [
+        {
+          "id": "3",
+          "quantity": 5
+        },
+        {
+          "id": "2",
+          "quantity": 1
+        },
+        {
+          "id": "1",
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "quantity": 1
+        }
+      ],
+      "order": [
+        {
+          "id": "3",
+          "quantity": 5,
+          "orderId": "1752746321180-0",
+          "date": "7/17/2025, 3:28:41 PM"
+        },
+        {
+          "id": "3",
+          "quantity": 1,
+          "orderId": "1752748424473-0",
+          "date": "7/17/2025, 4:03:44 PM"
+        },
+        {
+          "id": "6",
+          "quantity": 1,
+          "orderId": "1752754737015-0",
+          "date": "7/17/2025, 5:48:57 PM"
+        },
+        {
+          "id": "6",
+          "quantity": 1,
+          "orderId": "1752754759918-0",
+          "date": "7/17/2025, 5:49:19 PM"
+        }
+      ]
     },
     {
-      "id": "5921",
-      "name": "adda@gmail.com",
-      "email": "adda@gmail.com",
-      "password": "adda@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "77f6",
-      "name": "add",
-      "email": "add@gmail.com",
-      "password": "add@gmail.com",
-      "role": "user"
+      "id": "21fc",
+      "name": "jaggu",
+      "email": "jaggu@gmail.com",
+      "password": "jaggu@gmail.com",
+      "role": "user",
+      "wishlist": [],
+      "cart": [],
+      "order": []
     }
   ]
 }

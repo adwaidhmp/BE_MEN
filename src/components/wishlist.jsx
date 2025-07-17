@@ -1,75 +1,102 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { WishlistContext } from "./contexts/wishlistcontext";
 import { CartContext } from "./contexts/cartcontext";
-import { OrderContext } from "./contexts/ordercontext";
+import axios from "axios";
 
 function Wishlist() {
   const { wishlist, removeFromWishlist } = useContext(WishlistContext);
+  const { addToCart } = useContext(CartContext);
+  const [allProducts, setAllProducts] = useState([]);
+  const [wishlistProducts, setWishlistProducts] = useState([]);
   const navigate = useNavigate();
-    const { cart, addToCart } = useContext(CartContext);
-    const { placeOrder } = useContext(OrderContext);
-    console.log(cart)
 
-  if (wishlist.length === 0) {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await axios.get("http://localhost:3001/products");
+      setAllProducts(res.data);
+    };
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    const matched = allProducts.filter((p) => wishlist.includes(p.id));
+    setWishlistProducts(matched);
+  }, [wishlist, allProducts]);
+
+  if (wishlistProducts.length === 0) {
     return (
-      <div className="text-center py-20 text-xl text-gray-600">
+      <div className="flex items-center justify-center min-h-screen text-xl text-gray-600">
         Your wishlist is empty 💔
       </div>
     );
   }
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold py-10 mb-6 text-center">My Wishlist ❤️</h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {wishlist.map((product) => (
+    <div className="px-4 py-10 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl font-bold py-6 text-center">My Wishlist ❤️</h1>
+
+      {/* 2 cards per row */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {wishlistProducts.map((product) => (
           <div
             key={product.id}
-            className="relative bg-white p-4 rounded-lg shadow hover:shadow-lg transition cursor-pointer"
+            className="relative flex items-start bg-white p-3 rounded-md shadow hover:shadow-gray-500 transition cursor-pointer"
             onClick={() => navigate(`/product/${product.id}`)}
           >
-            {/* Remove Heart Icon */}
+            {/* Remove Icon */}
             <div
               onClick={(e) => {
                 e.stopPropagation();
                 removeFromWishlist(product.id);
               }}
-              className="absolute top-2 right-2 text-xl text-red-500 hover:text-gray-400"
+              className="absolute top-2 right-2 text-lg text-red-500 hover:text-gray-400"
+              title="Remove from Wishlist"
             >
               ❤️
             </div>
 
+            {/* Image */}
             <img
               src={product.image[0]}
               alt={product.name}
-              className="h-40 w-full object-cover rounded mb-2"
+              className="w-40 h-24 object-cover rounded mr-4"
             />
-            <h2 className="font-semibold text-lg">{product.brand}</h2>
-            <p className="text-gray-600">{product.category}</p>
-            <p className="text-gray-800 font-bold">${product.price}</p>
-            <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
 
-            <button
-                  onClick={(e) => {
-                  e.stopPropagation();
-                  addToCart(product);
-                   }}
-                  className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
-                  >
-                Add to Cart
-                </button>
+            {/* Info and Buttons */}
+            <div className="flex flex-col justify-between flex-1 h-full">
+              {/* Product Info */}
+              <div>
+                <h2 className="text-base font-semibold text-gray-800">{product.brand}</h2>
+                <p className="text-sm text-gray-500 capitalize">{product.category}</p>
+                <p className="text-sm font-bold text-gray-900">$ {product.price}</p>
+                <p className="text-sm text-yellow-500">⭐ {product.rating}</p>
+              </div>
 
+              {/* Bottom Buttons */}
+              <div className="flex justify-between mt-4">
                 <button
-              onClick={(e) => {
-                e.stopPropagation();
-                placeOrder(product); 
-                navigate("/orders"); 
-                }}
-               className=" relative left-12 mt-4 bg-black text-white py-1 px-3 rounded hover:text-green-400"
-                   >
-               Buy Now
-            </button>
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(product);
+                  }}
+                  className="bg-black text-white text-xs px-3 py-1 rounded hover:text-blue-300"
+                >
+                  Add to Cart
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate("/payment", {
+                      state: { product: { ...product, quantity: 1 } },
+                    });
+                  }}
+                  className="bg-black rounded text-white text-xs px-3 py-1 hover:text-green-400"
+                >
+                  Buy Now
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
