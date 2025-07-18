@@ -69,7 +69,7 @@ function Navbar() {
       {/* Right - Links */}
       <div className="flex space-x-6">
        
-        <Link to="/" className="hover:text-gray-600">Home</Link>
+        <Link to="/home" className="hover:text-gray-600">Products</Link>
         
 
         {/* Wishlist with count */}

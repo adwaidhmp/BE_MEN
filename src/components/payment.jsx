@@ -13,12 +13,18 @@ function Payment() {
     return <div className="text-center py-20 text-xl">No product selected for payment</div>;
   }
 
-  const handlePayment = async () => {
-  const productsToOrder = Array.isArray(product) ? product : [product];
+const handlePayment = async () => {
+  const productsToOrder = (Array.isArray(product) ? product : [product]).map((p) => ({
+    id: p.id,
+    quantity: p.quantity || 1,
+    price: (parseFloat(p.price) * (p.quantity || 1)).toFixed(2),               
+    category: p.category || "", 
+  }));
 
   await placeOrder(productsToOrder); 
   navigate("/orders", { replace: true });
 };
+
 
 
   return (

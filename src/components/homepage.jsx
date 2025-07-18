@@ -35,7 +35,6 @@ function Homepage() {
         setLoading(true);
         const response = await fetch("http://localhost:3001/products");
         const data = await response.json();
-
         setalldata(data);
         setFilteredProducts(data);
 
@@ -201,20 +200,6 @@ function Homepage() {
                     onClick={() => navigate(`/product/${product.id}`)}
                     className="relative bg-white p-4 rounded-lg shadow cursor-pointer hover:shadow-lg shadow-gray-600 transition"
                   >
-                    {/* Heart Button */}
-                    <div
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (!user) {
-                          navigate("/login");
-                          return;
-                        }
-                        toggleWishlist(product.id);
-                      }}
-                      className="absolute top-2 right-2 text-xl"
-                    >
-                      {isInWishlist ? "❤️" : "🤍"}
-                    </div>
 
                     <img
                       src={product.image[0]}
@@ -224,37 +209,38 @@ function Homepage() {
                     <h2 className="font-semibold text-lg">{product.brand}</h2>
                     <p className="text-gray-600">{product.category}</p>
                     <p className="text-gray-800 font-bold">${product.price}</p>
+                    <div className="flex items-center justify-between mt-2">
                     <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
-
-                    <button
+  
+                    <div className="flex items-center gap-2">
+                    <div
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (!user) {
-                          navigate("/login");
-                          return;
-                        }
-                        addToCart({ id: product.id });
-                      }}
-                      className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
-                    >
-                      Add to Cart
-                    </button>
-
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (!user) {
-                          navigate("/login");
-                          return;
-                        }
-                        navigate("/payment", {
-                          state: { product: { ...product, quantity: 1 } },
-                        });
-                      }}
-                      className="relative left-12 mt-4 bg-black text-white py-1 px-3 rounded hover:text-green-400"
-                    >
-                      Buy Now
-                    </button>
+                         if (!user) {
+                           navigate("/login");
+                           return;
+                              }
+                        toggleWishlist(product.id);
+                        }}
+                    className="text-xl cursor-pointer"
+                  >
+                  {isInWishlist ? "❤️" : "🤍"}
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (!user) {
+                      navigate("/login");
+                      return;
+                    }
+                    addToCart({ id: product.id });
+                  }}
+                  className="bg-black text-white py-1 px-2 rounded text-sm hover:text-blue-300"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
                   </div>
                 );
               })}

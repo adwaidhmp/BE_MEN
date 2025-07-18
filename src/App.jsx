@@ -1,5 +1,5 @@
 import './App.css'
-import {Routes,Route} from "react-router-dom"
+import {Routes,Route, useLocation} from "react-router-dom"
 import Homepage from './components/homepage'
 import Navbar from './components/navbar'
 import Aboutus from './components/Aboutus'
@@ -20,9 +20,19 @@ import ProtectedRoute from './components/contexts/protectedroutes'
 import Contact from './components/contact'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminRoute from './components/admin/AdminRoute'
+import Dashboard from './components/admin/Dashboard'
+import Users from './components/admin/Admuser'
+import AdmOrders from './components/admin/Admorders'
+import Products from './components/admin/Admproducts'
+import AdminLayout from './components/admin/AdminLayout'
+import NotFound from './components/Notfound'
+import Landing from './components/Landing'
 
 
 function App() {
+const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin")|| location.pathname === "/";
   return (
     <>
     <ToastContainer position="top-center" autoClose={1000} 
@@ -31,9 +41,15 @@ function App() {
     <WishlistProvider>
     <CartProvider>
     <OrderProvider>
-    <Navbar/>
+    {!isAdminRoute && <Navbar />}
       <Routes>
-        <Route path='/' element={<Homepage/>}/>
+      <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
+        <Route index element={<Dashboard />} />
+        <Route path="users" element={<Users />} />
+        <Route path="orders" element={<AdmOrders />} />
+        <Route path="products" element={<Products />} />
+        </Route>
+        <Route path='/home' element={<Homepage/>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
         <Route path='/about' element={<Aboutus/>}/>
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute> } />
@@ -44,6 +60,8 @@ function App() {
         <Route path="/login" element={<LoginRoute><Login /></LoginRoute>} />
         <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
         <Route path='/contact' element={<Contact/>}/>
+        <Route path="*" element={<NotFound/>} />
+        <Route path="/" element={<Landing/>}/>
       </Routes>
       </OrderProvider>
       </CartProvider>

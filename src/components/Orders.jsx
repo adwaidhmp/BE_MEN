@@ -26,7 +26,8 @@ const orderProducts = orders
       ...product,
       orderId: order.orderId,
       date: order.date,
-      quantity: order.quantity || 1 
+      quantity: order.quantity || 1 ,
+      status: order.status || "pending"
     };
   })
   .filter(Boolean);
@@ -63,9 +64,17 @@ const orderProducts = orders
             <p className="text-sm text-gray-700">
               Total: <strong>${(order.price * order.quantity).toFixed(2)}</strong>
             </p>
-            <p className="text-yellow-500 text-xs">⭐ {order.rating}</p>
+           
             <p className="text-xs text-gray-500">🕒 {order.date}</p>
-          </div>
+            <p className={`text-sm font-medium ${
+            order.status === "pending" ? "text-yellow-600" :
+            order.status === "delivered" ? "text-green-600" :
+            "text-gray-500"
+            }`}>
+              Status: {order.status}
+            </p>
+            </div>
+            {order.status !== "delivered" && (
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -74,7 +83,7 @@ const orderProducts = orders
             className="bg-red-500 text-white text-sm px-2 py-1 rounded hover:bg-red-600"
           >
             Cancel Order
-          </button>
+          </button>)}
         </div>
       ))}
     </div>

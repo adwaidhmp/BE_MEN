@@ -5,7 +5,10 @@ const LoginRoute = ({ children }) => {
   const { user } = useAuth();
 
   if (user) {
-    return <Navigate to="/" replace />;
+    if (user.role?.toLowerCase() === "admin") {
+      return <Navigate to="/admin" replace />;
+    }
+    return <Navigate to="/home" replace />;
   }
 
   return children;

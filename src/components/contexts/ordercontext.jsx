@@ -32,6 +32,9 @@ export const OrderProvider = ({ children }) => {
     quantity: product.quantity || 1,
     orderId: `${timestamp}-${index}`,  
     date: new Date().toLocaleString(),
+    price:product.price.toString(),
+    category: product.category || "",
+    status:"pending"
   }));
 
   const updated = [...orders, ...newOrders];

@@ -7,7 +7,7 @@ function Footer() {
         <h2 className="text-xl font-bold mb-4 md:mb-0">BE MEN</h2>
 
         <div className="flex space-x-6">
-          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="hover:text-gray-400">Home</Link>
+          <Link to="/home" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="hover:text-gray-400">Home</Link>
           <Link to="/about" className="hover:text-gray-400">About</Link>
           <Link to="/contact" className="hover:text-gray-400">Contact</Link>
         </div>

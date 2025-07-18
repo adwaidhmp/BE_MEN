@@ -14,29 +14,44 @@ function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await axios.get("http://localhost:3001/users");
-      const user = res.data.find(
-        (u) => u.email === form.email && u.password === form.password
-      );
-      console.log(user)
+  try {
+    const res = await axios.get("http://localhost:3001/users");
+    const user = res.data.find(
+    (u) =>
+    u.email.trim().toLowerCase() === form.email.trim().toLowerCase() &&
+    u.password === form.password
+    );
 
-      if (user) {
-        setUser(user); 
-        sessionStorage.setItem("user", JSON.stringify(user));
-        toast.success("Login successful!");
-        navigate("/", { replace: true });
-      } else {
-        toast.error("Invalid email or password");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-        toast.error("An error occurred while logging in");
+    if (!user) {
+      toast.error("Invalid email or password");
+      return;
     }
-  };
+
+    if (user.blocked) {
+      toast.error("Your account is blocked.");
+      return;
+    }
+
+    await axios.patch(`http://localhost:3001/users/${user.id}`, { active: true });
+
+    setUser({ ...user, active: true });
+    sessionStorage.setItem("user", JSON.stringify({ ...user, active: true }));
+    toast.success("Login successful!");
+
+    if (user.role !== "admin") {
+      navigate("/home", { replace: true });
+    } else {
+      navigate("/admin", { replace: true });
+    }
+
+  } catch (error) {
+    console.error("Login error:", error);
+    toast.error("An error occurred while logging in");
+  }
+};
 
   return (
     <div className="p-8 max-w-md mx-auto bg-white rounded shadow mt-20">

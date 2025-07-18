@@ -985,17 +985,29 @@
       ],
       "rating": 4.5,
       "brand": "Tomwood"
+    },
+    {
+      "id": "76",
+      "name": "cap",
+      "category": "cap",
+      "price": 70,
+      "image": [
+        "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQQEI8a1iMg3y1jjIObUQaGZr6LGeboIWLiuKUo_EbwIjjxSw8vBbqUnw7gFEgG0MCI6m-OFE_ESyP0tQD1x_5wpaST_P8Lu-RfkvNYdWeuTCRTOT-PvkC-bw"
+      ],
+      "rating": 4,
+      "brand": "jack and jones"
     }
   ],
   "users": [
     {
       "id": "1",
-      "name": "Adwaith",
+      "name": "Adwaidh",
       "email": "bemen@gmail.com",
       "password": "bemen@gmail.com",
       "role": "admin",
       "blocked": false,
-      "active": true
+      "active": true,
+      "order": []
     },
     {
       "id": "1b70",
@@ -1006,7 +1018,8 @@
       "wishlist": [],
       "cart": [],
       "order": [],
-      "blocked": false
+      "blocked": false,
+      "active": false
     },
     {
       "id": "affc",
@@ -1015,18 +1028,21 @@
       "password": "adwaidh7727@gmail.com",
       "role": "user",
       "wishlist": [
+        "16",
         "2",
         "3",
-        "4"
+        "4",
+        "1",
+        "7"
       ],
       "cart": [
         {
-          "id": "2",
-          "quantity": 5
+          "id": "16",
+          "quantity": 3
         },
         {
-          "id": "26",
-          "quantity": 10
+          "id": "2",
+          "quantity": 1
         },
         {
           "id": "3",
@@ -1058,20 +1074,65 @@
           "date": "7/18/2025, 12:25:44 PM",
           "price": "90.00",
           "category": "sunglass",
-          "status": "pending"
+          "status": "delivered"
         },
         {
           "id": "53",
-          "quantity": 1,
-          "orderId": "1752828944376-0",
-          "date": "7/18/2025, 2:25:44 PM",
-          "price": "110.00",
+          "quantity": 5,
+          "orderId": "1752830362076-0",
+          "date": "7/18/2025, 2:49:22 PM",
+          "price": "550.00",
           "category": "wallet",
+          "status": "pending"
+        },
+        {
+          "id": "2",
+          "quantity": 1,
+          "orderId": "1752840276486-0",
+          "date": "7/18/2025, 5:34:36 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "pending"
+        },
+        {
+          "id": "3",
+          "quantity": 1,
+          "orderId": "1752841689944-0",
+          "date": "7/18/2025, 5:58:09 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "pending"
+        },
+        {
+          "id": "1",
+          "quantity": 3,
+          "orderId": "1752842105122-0",
+          "date": "7/18/2025, 6:05:05 PM",
+          "price": "270.00",
+          "category": "sunglass",
+          "status": "pending"
+        },
+        {
+          "id": "16",
+          "quantity": 3,
+          "orderId": "1752842135282-0",
+          "date": "7/18/2025, 6:05:35 PM",
+          "price": "300.00",
+          "category": "belt",
+          "status": "pending"
+        },
+        {
+          "id": "16",
+          "quantity": 1,
+          "orderId": "1752842143106-0",
+          "date": "7/18/2025, 6:05:43 PM",
+          "price": "100.00",
+          "category": "belt",
           "status": "pending"
         }
       ],
       "blocked": false,
-      "active": true
+      "active": false
     }
   ]
 }

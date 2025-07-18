@@ -35,7 +35,7 @@ function Signup() {
           toast.success("You have already have account")
           return;
         }
-        await axios.post("http://localhost:3001/users", {...values,role:"user",wishlist:[],cart:[],order:[]});
+        await axios.post("http://localhost:3001/users", {...values,role:"user",wishlist:[],cart:[],order:[],blocked:false,active:false});
         toast.success("signed up succesfully")
         navigate("/login");
       } catch (error) {

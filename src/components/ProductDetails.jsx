@@ -72,13 +72,11 @@ function ProductDetails() {
 
         <button
           onClick={(e) => {
-            e.stopPropagation();
-            if (!user) {
-              navigate("/login");
-              return;
-            }
-            navigate("/payment", { state: { product } });
-          }}
+                    e.stopPropagation();
+                    navigate("/payment", {
+                      state: { product: { ...product, quantity: 1 } },
+                    });
+                  }}
           className="relative left-40 mt-4 bg-black text-white py-1 px-3 rounded hover:text-green-400"
         >
           Buy Now
