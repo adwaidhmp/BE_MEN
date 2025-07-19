@@ -22,13 +22,9 @@ function Homepage() {
   const { cart, addToCart } = useContext(CartContext);
   const { user } = useAuth();
 
-  console.log(cart)
-
-  // Extract search query from URL (?search=...)
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get("search")?.toLowerCase() || "";
 
-  // Fetch all products and category images
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -38,16 +34,8 @@ function Homepage() {
         setalldata(data);
         setFilteredProducts(data);
 
-        // Extract one image per category for marquee
         const categories = [
-          "sunglass",
-          "cap",
-          "belt",
-          "watch",
-          "wallet",
-          "spray",
-          "rings",
-          "chains",
+          "sunglass", "cap", "belt", "watch", "wallet", "spray", "rings", "chains"
         ];
         const selectedimages = [];
         for (let category of categories) {
@@ -66,7 +54,6 @@ function Homepage() {
     fetchProducts();
   }, []);
 
-  // Filter products by category and price dropdowns
   useEffect(() => {
     let updated = [...alldata];
 
@@ -74,18 +61,17 @@ function Homepage() {
       updated = updated.filter((p) => p.category === selectedCategory);
     }
 
-     if (selectedPrice === "below") {
-    updated = updated.filter((p) => p.price < 100);
-  } else if (selectedPrice === "equal") {
-    updated = updated.filter((p) => p.price === 100);
-  } else if (selectedPrice === "above") {
-    updated = updated.filter((p) => p.price > 100);
-  }
+    if (selectedPrice === "below") {
+      updated = updated.filter((p) => p.price < 100);
+    } else if (selectedPrice === "equal") {
+      updated = updated.filter((p) => p.price === 100);
+    } else if (selectedPrice === "above") {
+      updated = updated.filter((p) => p.price > 100);
+    }
 
     setFilteredProducts(updated);
   }, [selectedCategory, selectedPrice, alldata]);
 
-  // Search filter (overrides category/price filters for now)
   useEffect(() => {
     if (!searchQuery) {
       setFilteredProducts(alldata);
@@ -104,17 +90,15 @@ function Homepage() {
   }, [searchQuery, alldata]);
 
   if (loading) return <Loader />;
-  
 
   return (
     <>
-    
       <div className="bg-gray-100 min-h-screen px-6 py-20 text-gray-800">
         <h1 className="text-3xl font-bold mb-8 text-center">
           Explore Men's Accessories
         </h1>
 
-        {/* Moving images marquee */}
+        {/* Marquee */}
         <div className="overflow-hidden whitespace-nowrap">
           <style>
             {`
@@ -142,40 +126,41 @@ function Homepage() {
         </div>
 
         {/* Filters */}
-        <div className="flex justify-between items-center py-5">
-          {/* Sort Dropdown (Left) */}
-          <div className="flex items-center space-x-2">
-            <label className="font-medium">Sort by Price:</label>
-            <select
-              onChange={(e) => setSelectedPrice(e.target.value)}
-              value={selectedPrice}
-              className="p-1 border rounded w-[140px]"
-            >
-              <option value="all">All</option>
-              <option value="below">Below $100</option>
-              <option value="equal">Exactly $100</option>
-              <option value="above">Above $100</option>
-            </select>
+        <div className="flex flex-col sm:flex-row justify-between items-center py-5 gap-4">
+          {/* Category Buttons - Center */}
+          <div className="flex justify-center flex-wrap gap-2">
+            {["all", "sunglass", "cap", "belt", "watch", "wallet", "spray", "rings", "chains"].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3 py-1 rounded border ${
+                  selectedCategory === cat
+                    ? "bg-black text-white"
+                    : "bg-white text-black hover:bg-gray-200"
+                }`}
+              >
+                {cat === "all"
+                  ? "All"
+                  : cat.charAt(0).toUpperCase() + cat.slice(1) + (cat === "cap" ? "s" : "s")}
+              </button>
+            ))}
           </div>
 
-          {/* Filter Dropdown (Right) */}
-          <div className="flex items-center space-x-2">
-            <label className="font-semibold">Filter by Category:</label>
-            <select
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              value={selectedCategory}
-              className="p-1 border rounded w-[120px]"
-            >
-              <option value="all">All</option>
-              <option value="sunglass">Sunglasses</option>
-              <option value="cap">Caps</option>
-              <option value="belt">Belts</option>
-              <option value="watch">Watches</option>
-              <option value="wallet">Wallets</option>
-              <option value="spray">Sprays</option>
-              <option value="rings">Rings</option>
-              <option value="chains">Chains</option>
-            </select>
+          {/* Price Filter - Right End */}
+          <div className="w-full sm:w-auto flex justify-end">
+            <div className="flex items-center space-x-2">
+              <label className="font-medium">Sort by Price:</label>
+              <select
+                onChange={(e) => setSelectedPrice(e.target.value)}
+                value={selectedPrice}
+                className="p-1 border rounded w-[140px]"
+              >
+                <option value="all">All</option>
+                <option value="below">Below $100</option>
+                <option value="equal">Exactly $100</option>
+                <option value="above">Above $100</option>
+              </select>
+            </div>
           </div>
         </div>
 
@@ -202,7 +187,6 @@ function Homepage() {
                     onClick={() => navigate(`/product/${product.id}`)}
                     className="relative bg-white p-4 rounded-lg shadow cursor-pointer hover:shadow-lg shadow-gray-600 transition"
                   >
-
                     <img
                       src={product.image[0]}
                       alt={product.name}
@@ -212,49 +196,48 @@ function Homepage() {
                     <p className="text-gray-600">{product.category}</p>
                     <p className="text-gray-800 font-bold">${product.price}</p>
                     <div className="flex items-center justify-between mt-2">
-                    <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
-  
-                    <div className="flex items-center gap-2">
-                    <div
-                      onClick={(e) => {
-                        e.stopPropagation();
-                         if (!user) {
-                           navigate("/login");
-                           return;
+                      <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
+                      <div className="flex items-center gap-2">
+                        <div
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (!user) {
+                              navigate("/login");
+                              return;
+                            }
+                            toggleWishlist(product.id);
+                          }}
+                          className="text-xl cursor-pointer"
+                        >
+                          {isInWishlist ? "❤️" : "🤍"}
+                        </div>
+                        {isInCart ? (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate("/cart");
+                            }}
+                            className="mt-4 bg-black text-white py-1 px-2 text-sm sm:text-base rounded whitespace-nowrap hover:text-blue-300"
+                          >
+                            Go to Cart
+                          </button>
+                        ) : (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (!user) {
+                                navigate("/login");
+                                return;
                               }
-                        toggleWishlist(product.id);
-                        }}
-                    className="text-xl cursor-pointer"
-                  >
-                  {isInWishlist ? "❤️" : "🤍"}
-                </div>
-                {isInCart ? (
-                    <button
-                      onClick={(e) => {
-                         e.stopPropagation();
-                        navigate("/cart")}}
-                      className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
-                    >
-                      Go to Cart
-                    </button>
-                  ) : (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (!user) {
-                          navigate("/login");
-                          return;
-                        }
-                        addToCart(product);
-                      }}
-                      className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
-                    >
-                      Add to Cart
-                    </button>
-                  )}
-
-              </div>
-            </div>
+                              addToCart(product);
+                            }}
+                            className="mt-4 bg-black text-white py-1 px-2 text-sm sm:text-base rounded whitespace-nowrap hover:text-blue-300"
+                          >
+                            Add to Cart
+                          </button>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 );
               })}

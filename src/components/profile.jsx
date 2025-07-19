@@ -13,7 +13,7 @@ function Profile({ onClose, profileRef }) {
   const { clearCart } = useContext(CartContext);
 
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", profilePicture: "" });
+  const [editForm, setEditForm] = useState({ name: "", email: "", password: "" });
 
   useEffect(() => {
     const storedUser = JSON.parse(sessionStorage.getItem("user"));
@@ -27,11 +27,6 @@ function Profile({ onClose, profileRef }) {
         const res = await axios.get("http://localhost:3001/users");
         const matchedUser = res.data.find((u) => u.email === storedUser.email);
         setUser(matchedUser);
-        setFormData({
-          name: matchedUser.name,
-          email: matchedUser.email,
-          profilePicture: matchedUser.profilePicture || "",
-        });
       } catch (err) {
         console.error("Error fetching user:", err);
       }
@@ -41,40 +36,36 @@ function Profile({ onClose, profileRef }) {
   }, []);
 
   const handleLogout = async () => {
-  try {
-    await axios.patch(`http://localhost:3001/users/${user.id}`, { active: false });
-    sessionStorage.removeItem("user");
-    setUser(null);
-    clearWishlist();
-    clearCart();
-    navigate("/");
-    onClose();
-    toast.success("Logged out successfully");
-  } catch (err) {
-    console.error("Failed to logout:", err);
-    toast.error("Logout failed");
-  }
-};
-
-
-  const handleEditToggle = () => {
-    setIsEditing(!isEditing);
-  };
-
-  const handleInputChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSave = async () => {
     try {
-      const res = await axios.patch(`http://localhost:3001/users/${user.id}`, formData);
-      setUser(res.data);
-      sessionStorage.setItem("user", JSON.stringify(res.data));
-      setIsEditing(false);
-      toast.success("Profile updated!");
+      await axios.patch(`http://localhost:3001/users/${user.id}`, { active: false });
+      sessionStorage.removeItem("user");
+      setUser(null);
+      clearWishlist();
+      clearCart();
+      navigate("/");
+      onClose();
+      toast.success("Logged out successfully");
     } catch (err) {
-      toast.error("Error updating profile.");
-      console.error(err);
+      console.error("Failed to logout:", err);
+      toast.error("Logout failed");
+    }
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const updated = {
+        name: editForm.name || user.name,
+        email: editForm.email || user.email,
+        password: editForm.password || user.password,
+      };
+      await axios.patch(`http://localhost:3001/users/${user.id}`, updated);
+      toast.success("Profile updated!");
+      setUser({ ...user, ...updated });
+      setIsEditing(false);
+    } catch (err) {
+      console.error("Update failed:", err);
+      toast.error("Failed to update profile");
     }
   };
 
@@ -97,99 +88,108 @@ function Profile({ onClose, profileRef }) {
           {/* 👤 Profile Image */}
           <div className="flex justify-center mb-4">
             <img
-              src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSLU5_eUUGBfxfxRd4IquPiEwLbt4E_6RYMw&s"}
+              src={
+                user.profilePicture ||
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSLU5_eUUGBfxfxRd4IquPiEwLbt4E_6RYMw&s"
+              }
               alt="Profile"
               className="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover"
             />
           </div>
 
+          <div className="text-center mb-6">
+            <p className="mb-1 text-lg font-semibold text-gray-800">{user.name}</p>
+            <p className="text-sm text-gray-600">{user.email}</p>
+          </div>
+
           {isEditing ? (
-            <div className="space-y-2 mb-4">
+            <form onSubmit={handleEditSubmit} className="space-y-3 mb-6">
               <input
-                type="text"
                 name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Name"
-                className="w-full px-3 py-1 rounded border"
+                placeholder="New Name"
+                value={editForm.name}
+                onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                className="w-full px-3 py-2 border rounded"
               />
               <input
-                type="email"
                 name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Email"
-                className="w-full px-3 py-1 rounded border"
+                placeholder="New Email"
+                value={editForm.email}
+                onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                className="w-full px-3 py-2 border rounded"
               />
               <input
-                type="text"
-                name="profilePicture"
-                value={formData.profilePicture}
-                onChange={handleInputChange}
-                placeholder="Profile Picture URL"
-                className="w-full px-3 py-1 rounded border"
+                name="password"
+                type="password"
+                placeholder="New Password"
+                value={editForm.password}
+                onChange={(e) => setEditForm({ ...editForm, password: e.target.value })}
+                className="w-full px-3 py-2 border rounded"
               />
-              <div className="flex justify-between">
-                <button onClick={handleSave} className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">
-                  Save
-                </button>
-                <button onClick={handleEditToggle} className="text-gray-600 hover:text-red-500">
-                  Cancel
-                </button>
-              </div>
-            </div>
+              <button
+                type="submit"
+                className="w-full bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900"
+              >
+                Save Changes
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsEditing(false);
+                  setEditForm({
+                    name: user.name || "",
+                    email: user.email || "",
+                    password: user.password || "",
+                  });
+                }}
+                className="w-full bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700"
+              >
+                Cancel
+              </button>
+            </form>
           ) : (
             <>
-              {/* 👤 Info */}
-              <div className="text-center mb-4">
-                <p className="mb-1 text-lg font-semibold text-gray-800">{user.name}</p>
-                <p className="text-sm text-gray-600">{user.email}</p>
-              </div>
-
-              {/* ✏️ Edit button */}
-              <div className="flex justify-center mb-6">
+              <div className="flex flex-col space-y-2 mb-6">
                 <button
-                  onClick={handleEditToggle}
-                  className="px-4 py-1 rounded bg-blue-600 text-white hover:bg-blue-700"
+                  onClick={() => {
+                    setIsEditing(true);
+                    setEditForm({ name: "", email: "", password: "" }); // Fields blank on edit
+                  }}
+                  className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
                 >
                   Edit Profile
                 </button>
+                <Link
+                  to="/orders"
+                  onClick={onClose}
+                  className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
+                >
+                  Orders
+                </Link>
+                <Link
+                  to="/wishlist"
+                  onClick={onClose}
+                  className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
+                >
+                  Wishlist
+                </Link>
+                <Link
+                  to="/cart"
+                  onClick={onClose}
+                  className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
+                >
+                  Cart
+                </Link>
               </div>
+
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 text-white py-2 w-full rounded hover:bg-red-500"
+              >
+                Logout
+              </button>
             </>
           )}
-
-          {/* 📦 Links */}
-          <div className="flex flex-col space-y-2 mb-6">
-            <Link
-              to="/orders"
-              onClick={onClose}
-              className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
-            >
-              Orders
-            </Link>
-            <Link
-              to="/wishlist"
-              onClick={onClose}
-              className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
-            >
-              Wishlist
-            </Link>
-            <Link
-              to="/cart"
-              onClick={onClose}
-              className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
-            >
-              Cart
-            </Link>
-          </div>
-
-          {/* 🔓 Logout */}
-          <button
-            onClick={handleLogout}
-            className="bg-red-600 text-white py-2 w-full rounded hover:bg-red-500"
-          >
-            Logout
-          </button>
         </>
       ) : (
         <p className="text-center text-gray-600">Loading...</p>

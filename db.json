@@ -1140,6 +1140,14 @@
         {
           "id": "4",
           "quantity": 1
+        },
+        {
+          "id": "7",
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "quantity": 1
         }
       ],
       "order": [
@@ -1223,6 +1231,60 @@
           "price": "100.00",
           "category": "belt",
           "status": "pending"
+        },
+        {
+          "id": "16",
+          "quantity": 3,
+          "orderId": "1752926848244-0",
+          "date": "7/19/2025, 5:37:28 PM",
+          "price": "300.00",
+          "category": "belt",
+          "status": "pending"
+        },
+        {
+          "id": "2",
+          "quantity": 1,
+          "orderId": "1752926946603-0",
+          "date": "7/19/2025, 5:39:06 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "pending"
+        },
+        {
+          "id": "2",
+          "quantity": 1,
+          "orderId": "1752926965769-0",
+          "date": "7/19/2025, 5:39:25 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "pending"
+        },
+        {
+          "id": "36",
+          "quantity": 1,
+          "orderId": "1752935085336-0",
+          "date": "7/19/2025, 7:54:45 PM",
+          "price": "100.00",
+          "category": "watch",
+          "status": "pending"
+        },
+        {
+          "id": "36",
+          "quantity": 1,
+          "orderId": "1752935092469-0",
+          "date": "7/19/2025, 7:54:52 PM",
+          "price": "100.00",
+          "category": "watch",
+          "status": "pending"
+        },
+        {
+          "id": "2",
+          "quantity": 1,
+          "orderId": "1752935111977-0",
+          "date": "7/19/2025, 7:55:11 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "pending"
         }
       ],
       "blocked": false,
@@ -1239,6 +1301,19 @@
       "order": [],
       "blocked": false,
       "active": true
+    },
+    {
+      "id": "7a79",
+      "name": "damu",
+      "email": "damu@gmail.com",
+      "password": "damu@gmail.com",
+      "role": "user",
+      "wishlist": [],
+      "cart": [],
+      "order": [],
+      "blocked": false,
+      "active": false,
+      "profilePicture": ""
     }
   ]
 }

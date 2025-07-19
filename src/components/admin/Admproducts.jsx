@@ -45,10 +45,9 @@ export default function Products() {
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
-
     const exists = products.some((p) => p.id === newProduct.id);
     if (exists) {
-      alert("ID already exists. Choose a different ID.");
+      alert("ID already exists.");
       return;
     }
 
@@ -78,23 +77,18 @@ export default function Products() {
 
   const categories = ["All", ...new Set(products.map((p) => p.category))];
 
-  // Filter & Sort
   const filteredProducts = products
     .filter((p) => selectedCategory === "All" || p.category === selectedCategory)
-    .sort((a, b) => {
-      if (sortIdAsc) return a.id - b.id;
-      else return b.id - a.id;
-    });
+    .sort((a, b) => (sortIdAsc ? a.id - b.id : b.id - a.id));
 
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Products</h2>
+    <div className="p-4 md:p-6">
+      <h2 className="text-xl md:text-2xl font-bold mb-4">Products</h2>
 
       {/* Controls */}
-      <div className="flex justify-between items-center flex-wrap mb-6">
-        {/* Add Product Button */}
+      <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
@@ -103,16 +97,13 @@ export default function Products() {
             <Plus size={16} /> Add Product
           </button>
         )}
-
-        {/* Sorting and Filter */}
-        <div className="flex gap-4 mt-2 sm:mt-0">
+        <div className="flex flex-wrap gap-4">
           <button
             onClick={() => setSortIdAsc((prev) => !prev)}
             className="bg-gray-200 px-4 py-1 rounded hover:bg-gray-300"
           >
             Sort by ID: {sortIdAsc ? "Asc" : "Desc"}
           </button>
-
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -131,22 +122,24 @@ export default function Products() {
       {showForm && (
         <form
           onSubmit={handleAddProduct}
-          className="grid grid-cols-2 gap-4 mb-10 bg-white shadow p-6 rounded"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 bg-white shadow p-6 rounded"
         >
           <input name="id" value={newProduct.id} onChange={handleInputChange} placeholder="ID" className="border p-2 rounded" required />
           <input name="name" value={newProduct.name} onChange={handleInputChange} placeholder="Name" className="border p-2 rounded" required />
-          <select name="category" value={newProduct.category} onChange={handleInputChange} className="border p-2 rounded"required>
-            <option value="" disabled>Select Category</option>{categories.filter((cat) => cat !== "All")
-                .map((cat) => (<option key={cat} value={cat}>{cat}</option>))}
+          <select name="category" value={newProduct.category} onChange={handleInputChange} className="border p-2 rounded" required>
+            <option value="" disabled>Select Category</option>
+            {categories.filter((cat) => cat !== "All").map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
           </select>
           <input name="price" type="number" value={newProduct.price} onChange={handleInputChange} placeholder="Price" className="border p-2 rounded" required />
           <input name="image" value={newProduct.image[0]} onChange={handleInputChange} placeholder="Image Path" className="border p-2 rounded" required />
           <input name="rating" type="number" step="0.1" value={newProduct.rating} onChange={handleInputChange} placeholder="Rating" className="border p-2 rounded" required />
           <input name="brand" value={newProduct.brand} onChange={handleInputChange} placeholder="Brand" className="border p-2 rounded" required />
-          <div className="col-span-2 flex gap-4">
+          <div className="col-span-1 sm:col-span-2 flex flex-wrap gap-4">
             <button type="submit" className="bg-black text-white px-6 py-2 rounded hover:opacity-90">Submit</button>
-            <button type="button" onClick={() => setShowForm(false)} className="bg-gray-300 text-black px-6 py-2 rounded hover:opacity-80">
-              <X size={16} className="inline-block mr-1" />
+            <button type="button" onClick={() => setShowForm(false)} className="bg-gray-300 text-black px-6 py-2 rounded hover:opacity-80 flex items-center gap-1">
+              <X size={16} />
               Cancel
             </button>
           </div>
@@ -154,8 +147,8 @@ export default function Products() {
       )}
 
       {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow rounded-lg">
+      <div className="overflow-x-auto w-full">
+        <table className="min-w-[800px] w-full bg-white shadow rounded-lg">
           <thead className="bg-black text-white">
             <tr>
               <th className="px-6 py-3 text-left">ID</th>

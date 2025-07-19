@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 function Signup() {
   const navigate = useNavigate();
 
-  // Yup validation schema
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(2, "Name must be at least 2 characters")
@@ -32,74 +31,90 @@ function Signup() {
         const res = await axios.get("http://localhost:3001/users");
         const userExists = res.data.find((u) => u.email === values.email);
         if (userExists) {
-          toast.success("You have already have account")
+          toast.success("You already have an account");
           return;
         }
-        await axios.post("http://localhost:3001/users", {...values,role:"user",wishlist:[],cart:[],order:[],blocked:false,active:false});
-        toast.success("signed up succesfully")
+        await axios.post("http://localhost:3001/users", {
+          ...values,
+          role: "user",
+          wishlist: [],
+          cart: [],
+          order: [],
+          blocked: false,
+          active: false,
+        });
+        toast.success("Signed up successfully");
         navigate("/login");
       } catch (error) {
         console.error("Signup error:", error);
+        toast.error("Signup failed");
       }
     },
   });
 
   return (
-    <div className="p-8 max-w-md mx-auto bg-white rounded shadow mt-20">
-      <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-      <form onSubmit={formik.handleSubmit} className="space-y-4">
-        <input
-          name="name"
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Name"
-          className="w-full border px-3 py-2 rounded"
-        />
-        {formik.touched.name && formik.errors.name && (
-          <div className="text-red-600 text-sm">{formik.errors.name}</div>
-        )}
+    <div className="min-h-screen flex items-start sm:items-center justify-center bg-gray-100 pt-40 sm:pt-36 md:pt-32 lg:pt-28 px-4">
+      <div className="w-full max-w-md bg-white rounded shadow p-6 sm:p-8">
+        <h2 className="text-2xl font-bold mb-4 text-center">Sign Up</h2>
+        <form onSubmit={formik.handleSubmit} className="space-y-4">
+          <input
+            name="name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder="Name"
+            className="w-full border px-3 py-2 rounded"
+          />
+          {formik.touched.name && formik.errors.name && (
+            <div className="text-red-600 text-sm">{formik.errors.name}</div>
+          )}
 
-        <input
-          name="email"
-          type="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Email"
-          className="w-full border px-3 py-2 rounded"
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className="text-red-600 text-sm">{formik.errors.email}</div>
-        )}
+          <input
+            name="email"
+            type="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder="Email"
+            className="w-full border px-3 py-2 rounded"
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div className="text-red-600 text-sm">{formik.errors.email}</div>
+          )}
 
-        <input
-          name="password"
-          type="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Password"
-          className="w-full border px-3 py-2 rounded"
-        />
-        {formik.touched.password && formik.errors.password && (
-          <div className="text-red-600 text-sm">{formik.errors.password}</div>
-        )}
+          <input
+            name="password"
+            type="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder="Password"
+            className="w-full border px-3 py-2 rounded"
+          />
+          {formik.touched.password && formik.errors.password && (
+            <div className="text-red-600 text-sm">
+              {formik.errors.password}
+            </div>
+          )}
 
-        <button type="submit" className="w-full bg-black text-white py-2 rounded">
-          Sign Up
-        </button>
-      </form>
+          <button
+            type="submit"
+            className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+          >
+            Sign Up
+          </button>
+        </form>
 
-      <p className="mt-4 text-sm">
-        Already have an account?{" "}
-        <span
-          onClick={() => navigate("/login")}
-          className="text-blue-600 cursor-pointer"
-        >
-          Login here
-        </span>
-      </p>
+        <p className="mt-4 text-sm text-center">
+          Already have an account?{" "}
+          <span
+            onClick={() => navigate("/login")}
+            className="text-blue-600 cursor-pointer"
+          >
+            Login here
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
