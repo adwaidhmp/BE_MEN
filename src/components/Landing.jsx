@@ -31,7 +31,7 @@ export default function Landing() {
       </div>
 
       {/* Categories Section */}
-      <section className="py-20 px-6 md:px-20 bg-gray-950">
+      <section className="py-20 px-6 md:px-20 bg-black">
         <h2 className="text-4xl font-bold text-center mb-12">Our Collections</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
           {[

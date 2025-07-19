@@ -104,6 +104,7 @@ function Homepage() {
   }, [searchQuery, alldata]);
 
   if (loading) return <Loader />;
+  
 
   return (
     <>
@@ -194,6 +195,7 @@ function Homepage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 py-1">
               {filteredProducts.slice(0, visibleCount).map((product) => {
                 const isInWishlist = wishlist.includes(String(product.id));
+                const isInCart = cart.some((item) => item.id === product.id);
                 return (
                   <div
                     key={product.id}
@@ -226,19 +228,31 @@ function Homepage() {
                   >
                   {isInWishlist ? "❤️" : "🤍"}
                 </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (!user) {
-                      navigate("/login");
-                      return;
-                    }
-                    addToCart({ id: product.id });
-                  }}
-                  className="bg-black text-white py-1 px-2 rounded text-sm hover:text-blue-300"
-                >
-                  Add to Cart
-                </button>
+                {isInCart ? (
+                    <button
+                      onClick={(e) => {
+                         e.stopPropagation();
+                        navigate("/cart")}}
+                      className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
+                    >
+                      Go to Cart
+                    </button>
+                  ) : (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (!user) {
+                          navigate("/login");
+                          return;
+                        }
+                        addToCart(product);
+                      }}
+                      className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
+                    >
+                      Add to Cart
+                    </button>
+                  )}
+
               </div>
             </div>
                   </div>

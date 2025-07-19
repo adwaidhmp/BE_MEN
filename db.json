@@ -1015,9 +1015,94 @@
       "email": "jaggu@gmail.com",
       "password": "jaggu@gmail.com",
       "role": "user",
-      "wishlist": [],
-      "cart": [],
-      "order": [],
+      "wishlist": [
+        "2",
+        "3",
+        "60",
+        "65"
+      ],
+      "cart": [
+        {
+          "id": "60",
+          "quantity": 1
+        },
+        {
+          "id": "65",
+          "quantity": 2
+        },
+        {
+          "id": "74",
+          "quantity": 1
+        },
+        {
+          "id": "72",
+          "quantity": 2
+        },
+        {
+          "id": "68",
+          "quantity": 2
+        },
+        {
+          "id": "69",
+          "quantity": 1
+        }
+      ],
+      "order": [
+        {
+          "id": "60",
+          "quantity": 1,
+          "orderId": "1752895784927-0",
+          "date": "7/19/2025, 8:59:44 AM",
+          "price": "90.00",
+          "category": "spray",
+          "status": "pending"
+        },
+        {
+          "id": "65",
+          "quantity": 2,
+          "orderId": "1752895784927-1",
+          "date": "7/19/2025, 8:59:44 AM",
+          "price": "220.00",
+          "category": "spray",
+          "status": "delivered"
+        },
+        {
+          "id": "74",
+          "quantity": 1,
+          "orderId": "1752895784927-2",
+          "date": "7/19/2025, 8:59:44 AM",
+          "price": "90.00",
+          "category": "chains",
+          "status": "delivered"
+        },
+        {
+          "id": "72",
+          "quantity": 2,
+          "orderId": "1752895784927-3",
+          "date": "7/19/2025, 8:59:44 AM",
+          "price": "200.00",
+          "category": "chains",
+          "status": "delivered"
+        },
+        {
+          "id": "68",
+          "quantity": 2,
+          "orderId": "1752895784927-4",
+          "date": "7/19/2025, 8:59:44 AM",
+          "price": "200.00",
+          "category": "rings",
+          "status": "pending"
+        },
+        {
+          "id": "69",
+          "quantity": 1,
+          "orderId": "1752895784927-5",
+          "date": "7/19/2025, 8:59:44 AM",
+          "price": "100.00",
+          "category": "rings",
+          "status": "pending"
+        }
+      ],
       "blocked": false,
       "active": false
     },
@@ -1028,12 +1113,12 @@
       "password": "adwaidh7727@gmail.com",
       "role": "user",
       "wishlist": [
-        "16",
         "2",
         "3",
         "4",
-        "1",
-        "7"
+        "7",
+        "6",
+        "5"
       ],
       "cart": [
         {
@@ -1046,6 +1131,14 @@
         },
         {
           "id": "3",
+          "quantity": 1
+        },
+        {
+          "id": "1",
+          "quantity": 1
+        },
+        {
+          "id": "4",
           "quantity": 1
         }
       ],
@@ -1065,7 +1158,8 @@
           "orderId": "1752819239623-0",
           "date": "7/18/2025, 11:43:59 AM",
           "price": "1000.00",
-          "category": "cap"
+          "category": "cap",
+          "status": "delivered"
         },
         {
           "id": "3",
@@ -1083,7 +1177,7 @@
           "date": "7/18/2025, 2:49:22 PM",
           "price": "550.00",
           "category": "wallet",
-          "status": "pending"
+          "status": "delivered"
         },
         {
           "id": "2",
@@ -1110,7 +1204,7 @@
           "date": "7/18/2025, 6:05:05 PM",
           "price": "270.00",
           "category": "sunglass",
-          "status": "pending"
+          "status": "delivered"
         },
         {
           "id": "16",
@@ -1132,7 +1226,19 @@
         }
       ],
       "blocked": false,
-      "active": false
+      "active": true
+    },
+    {
+      "id": "0f3b",
+      "name": "Ram",
+      "email": "ram@gamail.com",
+      "password": "ram@gamail.com",
+      "role": "user",
+      "wishlist": [],
+      "cart": [],
+      "order": [],
+      "blocked": false,
+      "active": true
     }
   ]
 }

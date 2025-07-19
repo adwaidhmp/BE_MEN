@@ -10,6 +10,7 @@ const ProtectedRoute = ({ children }) => {
     // Redirect to login and preserve current location
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
+  if (user.role === "admin") return <Navigate to="/admin" />;
 
   return children;
 };

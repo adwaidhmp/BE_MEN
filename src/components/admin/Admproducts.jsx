@@ -135,7 +135,10 @@ export default function Products() {
         >
           <input name="id" value={newProduct.id} onChange={handleInputChange} placeholder="ID" className="border p-2 rounded" required />
           <input name="name" value={newProduct.name} onChange={handleInputChange} placeholder="Name" className="border p-2 rounded" required />
-          <input name="category" value={newProduct.category} onChange={handleInputChange} placeholder="Category" className="border p-2 rounded" required />
+          <select name="category" value={newProduct.category} onChange={handleInputChange} className="border p-2 rounded"required>
+            <option value="" disabled>Select Category</option>{categories.filter((cat) => cat !== "All")
+                .map((cat) => (<option key={cat} value={cat}>{cat}</option>))}
+          </select>
           <input name="price" type="number" value={newProduct.price} onChange={handleInputChange} placeholder="Price" className="border p-2 rounded" required />
           <input name="image" value={newProduct.image[0]} onChange={handleInputChange} placeholder="Image Path" className="border p-2 rounded" required />
           <input name="rating" type="number" step="0.1" value={newProduct.rating} onChange={handleInputChange} placeholder="Rating" className="border p-2 rounded" required />

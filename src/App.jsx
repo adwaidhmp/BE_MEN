@@ -30,11 +30,13 @@ import NotFound from './components/Notfound'
 import Landing from './components/Landing'
 
 
+
 function App() {
 const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin")|| location.pathname === "/";
   return (
     <>
+    
     <ToastContainer position="top-center" autoClose={1000} 
     toastClassName={() =>"bg-black text-white font-medium rounded-lg shadow-md p-3" }/>
     <AuthProvider>

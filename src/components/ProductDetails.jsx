@@ -9,7 +9,7 @@ function ProductDetails() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
-  const { addToCart } = useContext(CartContext);
+  const { cart,addToCart } = useContext(CartContext);
 
   const { id } = useParams(); // string by default
   const [product, setProduct] = useState(null);
@@ -26,6 +26,9 @@ function ProductDetails() {
   if (!product) return <div className="p-6 text-center">Loading...</div>;
 
   const isInWishlist = wishlist.includes(product.id); 
+  const isInCart = cart.some((item) => item.id === product.id);
+
+
 
   return (
     <div className="min-h-screen p-20 bg-gray-200 text-gray-800">
@@ -56,19 +59,29 @@ function ProductDetails() {
           {product.description || "No description available at the time sorry...."}
         </p>
 
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            if (!user) {
-              navigate("/login");
-              return;
-            }
-            addToCart(product);
-          }}
-          className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
-        >
-          Add to Cart
-        </button>
+          {isInCart ? (
+          <button
+            onClick={() => navigate("/cart")}
+            className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
+          >
+            Go to Cart
+          </button>
+        ) : (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (!user) {
+                navigate("/login");
+                return;
+              }
+              addToCart(product);
+            }}
+            className="mt-4 bg-black text-white py-1 px-3 rounded hover:text-blue-300"
+          >
+            Add to Cart
+          </button>
+        )}
+
 
         <button
           onClick={(e) => {
