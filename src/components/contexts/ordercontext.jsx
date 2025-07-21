@@ -34,7 +34,8 @@ export const OrderProvider = ({ children }) => {
     date: new Date().toLocaleString(),
     price:product.price.toString(),
     category: product.category || "",
-    status:"pending"
+    status:"pending",
+    address:product.address
   }));
 
   const updated = [...orders, ...newOrders];

@@ -16,6 +16,8 @@ function Navbar() {
   const [srch, setsearch] = useState("");
   const navigate = useNavigate();
 
+
+
   const handleSearch = () => {
     if (srch.trim()) {
       navigate(`/home?search=${encodeURIComponent(srch)}`);

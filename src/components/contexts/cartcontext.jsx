@@ -39,18 +39,27 @@ export const CartProvider = ({ children }) => {
     await syncToServer(updatedCart);
   };
 
+  const removeMultipleFromCart = async (idsToRemove) => {
+    const updatedCart = cart.filter((item) => !idsToRemove.includes(item.id));
+    await syncToServer(updatedCart);
+  };
+
   const updateQuantity = async (productId, amount) => {
     const updatedCart = cart.map((item) =>
       item.id === productId ? { ...item, quantity: Math.max(1, item.quantity + amount) } : item
     );
     await syncToServer(updatedCart);
   };
-      const clearCart = () => {
-    setCart([]); // Clear client state
+
+  const clearCart = () => {
+    setCart([]); // Clear client state only (not synced to DB)
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity,clearCart }}>
+    <CartContext.Provider
+      value={{
+        cart, addToCart, removeFromCart, updateQuantity, clearCart, removeMultipleFromCart, }}
+    >
       {children}
     </CartContext.Provider>
   );

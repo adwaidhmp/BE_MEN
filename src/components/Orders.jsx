@@ -70,7 +70,7 @@ function Orders() {
                     ? "text-yellow-600"
                     : order.status === "delivered"
                     ? "text-green-600"
-                    : "text-gray-500"
+                    : "text-blue-500"
                 }`}
               >
                 Status: {order.status}

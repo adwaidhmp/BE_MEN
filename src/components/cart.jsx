@@ -5,7 +5,7 @@ import axios from "axios";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
 function Cart() {
-  const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+  const { cart, removeFromCart, updateQuantity,removeMultipleFromCart } = useContext(CartContext);
   const [allProducts, setAllProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -34,12 +34,14 @@ function Cart() {
   );
 
   // Handle Buy All
-  const handleBuyAll = () => {
-    cartProducts.forEach((product) => {
-      removeFromCart(product.id); // remove from cart
-    });
-    navigate("/payment", { state: { product: cartProducts } });
-  };
+    const handleBuyAll = () => {
+      const productsToBuy = [...cartProducts];
+      const ids = productsToBuy.map((p) => p.id);
+
+      navigate("/payment", { state: { product: productsToBuy } });
+      removeMultipleFromCart(ids);
+    };
+
 
   if (cartProducts.length === 0) {
     return (
