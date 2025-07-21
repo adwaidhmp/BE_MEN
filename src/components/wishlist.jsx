@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { WishlistContext } from "./contexts/wishlistcontext";
 import { CartContext } from "./contexts/cartcontext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function Wishlist() {
   const { wishlist, removeFromWishlist } = useContext(WishlistContext);
@@ -88,6 +89,7 @@ function Wishlist() {
                   ) : (
                     <button
                       onClick={(e) => {
+                        toast.success("Added to cart")
                         e.stopPropagation();
                         addToCart(product);
                       }}

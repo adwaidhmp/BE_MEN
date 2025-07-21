@@ -3,6 +3,7 @@ import { CartContext } from "./contexts/cartcontext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { TrashIcon } from "@heroicons/react/24/solid";
+import { toast } from "react-toastify";
 
 function Cart() {
   const { cart, removeFromCart, updateQuantity,removeMultipleFromCart } = useContext(CartContext);
@@ -96,6 +97,7 @@ function Cart() {
               <button
                 onClick={(e) => {
                   e.stopPropagation();
+                  toast.error("Removed from cart")
                   removeFromCart(product.id);
                 }}
                 className="ml-auto text-red-500 hover:text-red-700"

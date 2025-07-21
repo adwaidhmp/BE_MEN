@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { OrderContext } from "./contexts/ordercontext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Orders() {
   const { orders, cancelOrder } = useContext(OrderContext);
@@ -81,6 +82,7 @@ function Orders() {
               <button
                 onClick={(e) => {
                   e.stopPropagation();
+                  toast.error("Order Cancelled")
                   cancelOrder(order.orderId);
                 }}
                 className="bg-red-500 text-white text-sm px-2 py-1 rounded hover:bg-red-600"

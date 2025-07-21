@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Trash2, Plus, X } from "lucide-react";
+import { Trash2, Plus, X, Pencil } from "lucide-react";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [editingProductId, setEditingProductId] = useState(null);
   const [newProduct, setNewProduct] = useState({
     id: "",
     name: "",
@@ -43,13 +44,8 @@ export default function Products() {
     }
   };
 
-  const handleAddProduct = async (e) => {
+  const handleAddOrUpdateProduct = async (e) => {
     e.preventDefault();
-    const exists = products.some((p) => p.id === newProduct.id);
-    if (exists) {
-      alert("ID already exists.");
-      return;
-    }
 
     const payload = {
       ...newProduct,
@@ -58,8 +54,21 @@ export default function Products() {
     };
 
     try {
-      const res = await axios.post("http://localhost:3001/products", payload);
-      setProducts([res.data, ...products]);
+      if (editingProductId) {
+        await axios.put(`http://localhost:3001/products/${editingProductId}`, payload);
+        setProducts((prev) =>
+          prev.map((p) => (p.id === editingProductId ? { ...payload } : p))
+        );
+      } else {
+        const exists = products.some((p) => p.id === newProduct.id);
+        if (exists) {
+          alert("ID already exists.");
+          return;
+        }
+        const res = await axios.post("http://localhost:3001/products", payload);
+        setProducts([res.data, ...products]);
+      }
+
       setNewProduct({
         id: "",
         name: "",
@@ -69,10 +78,18 @@ export default function Products() {
         rating: "",
         brand: "",
       });
+      setEditingProductId(null);
       setShowForm(false);
     } catch (err) {
-      console.error("Error adding product:", err);
+      console.error("Error:", err);
     }
+  };
+
+  const handleEdit = (product) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setNewProduct({ ...product });
+    setEditingProductId(product.id);
+    setShowForm(true);
   };
 
   const categories = ["All", ...new Set(products.map((p) => p.category))];
@@ -91,7 +108,19 @@ export default function Products() {
       <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
         {!showForm && (
           <button
-            onClick={() => setShowForm(true)}
+            onClick={() => {
+              setShowForm(true);
+              setEditingProductId(null); // for new product
+              setNewProduct({
+                id: "",
+                name: "",
+                category: "",
+                price: "",
+                image: [""],
+                rating: "",
+                brand: "",
+              });
+            }}
             className="bg-black text-white px-4 py-2 rounded flex items-center gap-2"
           >
             <Plus size={16} /> Add Product
@@ -121,24 +150,91 @@ export default function Products() {
       {/* Form */}
       {showForm && (
         <form
-          onSubmit={handleAddProduct}
+          onSubmit={handleAddOrUpdateProduct}
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 bg-white shadow p-6 rounded"
         >
-          <input name="id" value={newProduct.id} onChange={handleInputChange} placeholder="ID" className="border p-2 rounded" required />
-          <input name="name" value={newProduct.name} onChange={handleInputChange} placeholder="Name" className="border p-2 rounded" required />
-          <select name="category" value={newProduct.category} onChange={handleInputChange} className="border p-2 rounded" required>
-            <option value="" disabled>Select Category</option>
-            {categories.filter((cat) => cat !== "All").map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
-            ))}
+          <input
+            name="id"
+            value={newProduct.id}
+            onChange={handleInputChange}
+            placeholder="ID"
+            className="border p-2 rounded"
+            required
+            disabled={!!editingProductId}
+          />
+          <input
+            name="name"
+            value={newProduct.name}
+            onChange={handleInputChange}
+            placeholder="Name"
+            className="border p-2 rounded"
+            required
+          />
+          <select
+            name="category"
+            value={newProduct.category}
+            onChange={handleInputChange}
+            className="border p-2 rounded"
+            required
+          >
+            <option value="" disabled>
+              Select Category
+            </option>
+            {categories
+              .filter((cat) => cat !== "All")
+              .map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
           </select>
-          <input name="price" type="number" value={newProduct.price} onChange={handleInputChange} placeholder="Price" className="border p-2 rounded" required />
-          <input name="image" value={newProduct.image[0]} onChange={handleInputChange} placeholder="Image Path" className="border p-2 rounded" required />
-          <input name="rating" type="number" step="0.1" value={newProduct.rating} onChange={handleInputChange} placeholder="Rating" className="border p-2 rounded" required />
-          <input name="brand" value={newProduct.brand} onChange={handleInputChange} placeholder="Brand" className="border p-2 rounded" required />
+          <input
+            name="price"
+            type="number"
+            value={newProduct.price}
+            onChange={handleInputChange}
+            placeholder="Price"
+            className="border p-2 rounded"
+            required
+          />
+          <input
+            name="image"
+            value={newProduct.image[0]}
+            onChange={handleInputChange}
+            placeholder="Image Path"
+            className="border p-2 rounded"
+            required
+          />
+          <input
+            name="rating"
+            type="number"
+            step="0.1"
+            value={newProduct.rating}
+            onChange={handleInputChange}
+            placeholder="Rating"
+            className="border p-2 rounded"
+            required
+          />
+          <input
+            name="brand"
+            value={newProduct.brand}
+            onChange={handleInputChange}
+            placeholder="Brand"
+            className="border p-2 rounded"
+            required
+          />
           <div className="col-span-1 sm:col-span-2 flex flex-wrap gap-4">
-            <button type="submit" className="bg-black text-white px-6 py-2 rounded hover:opacity-90">Submit</button>
-            <button type="button" onClick={() => setShowForm(false)} className="bg-gray-300 text-black px-6 py-2 rounded hover:opacity-80 flex items-center gap-1">
+            <button type="submit" className="bg-black text-white px-6 py-2 rounded hover:opacity-90">
+              {editingProductId ? "Update" : "Submit"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setShowForm(false);
+                setEditingProductId(null);
+              }}
+              className="bg-gray-300 text-black px-6 py-2 rounded hover:opacity-80 flex items-center gap-1"
+            >
               <X size={16} />
               Cancel
             </button>
@@ -166,10 +262,18 @@ export default function Products() {
                 <td className="px-6 py-3">
                   <img src={p.image[0]} alt={p.name} className="w-24 h-16 object-cover rounded" />
                 </td>
-                <td className="px-6 py-3 font-medium">{p.name}</td>
+                <td className="px-6 py-3 font-medium">{p.brand}</td>
                 <td className="px-6 py-3 capitalize">{p.category}</td>
                 <td className="px-6 py-3">${p.price}</td>
-                <td className="px-6 py-3">
+                <td className="px-6 py-3 flex gap-2">
+                  <button
+                    onClick={() => {
+                       window.scrollTo({ top: 0, behavior: "smooth" });
+                      handleEdit(p)}}
+                    className="bg-blue-500 text-white px-4 py-1 rounded flex items-center gap-1 hover:opacity-80"
+                  >
+                    <Pencil size={16} /> Edit
+                  </button>
                   <button
                     onClick={() => handleDelete(p.id)}
                     className="bg-red-500 text-white px-4 py-1 rounded flex items-center gap-1 hover:opacity-80"

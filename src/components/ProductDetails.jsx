@@ -4,6 +4,8 @@ import { WishlistContext } from "./contexts/wishlistcontext";
 import { CartContext } from "./contexts/cartcontext";
 import { OrderContext } from "./contexts/ordercontext";
 import { useAuth } from "./contexts/Authcontext";
+import { toast } from "react-toastify";
+
 
 function ProductDetails() {
   const navigate = useNavigate();
@@ -77,6 +79,7 @@ function ProductDetails() {
           ) : (
             <button
               onClick={(e) => {
+                toast.success("Added to cart")
                 e.stopPropagation();
                 if (!user) {
                   navigate("/login");

@@ -4,6 +4,7 @@ import { WishlistContext } from "./contexts/wishlistcontext";
 import { CartContext } from "./contexts/cartcontext";
 import { useAuth } from "./contexts/Authcontext";
 import Footer from "./footer";
+import { toast } from "react-toastify";
 
 function Homepage() {
   const [categoryimages, setcategoryimages] = useState([]);
@@ -92,7 +93,7 @@ function Homepage() {
 
   return (
     <>
-      <div className="bg-gray-100 min-h-screen px-4 sm:px-6 pt-35 text-gray-800">
+      <div className="bg-gray-100 min-h-screen sm:px-6 pt-35 text-gray-800">
         <h1 className="text-3xl font-bold mb-8 text-center">
           Explore Men's Accessories
         </h1>
@@ -181,7 +182,7 @@ function Homepage() {
                   <div
                     key={product.id}
                     onClick={() => navigate(`/product/${product.id}`)}
-                    className="relative bg-white p-2 rounded-lg shadow cursor-pointer hover:shadow-lg transition"
+                    className="relative bg-white p-2 rounded-lg shadow cursor-pointer hover:shadow-2xl transition"
                   >
                     <img
                       src={product.image[0]}
@@ -221,6 +222,7 @@ function Homepage() {
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
+                              toast.success("Added to Cart")
                               if (!user) {
                                 navigate("/login");
                                 return;

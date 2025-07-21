@@ -21,6 +21,7 @@ function Payment() {
   }
 
   const handlePayment = async () => {
+    
     if (!address.trim()) {
       toast.error("Please enter a delivery address");
       return;

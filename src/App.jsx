@@ -30,6 +30,7 @@ import AdmOrders from './components/admin/Admorders'
 import Products from './components/admin/Admproducts'
 import NotFound from './components/Notfound'
 import Landing from './components/Landing'
+import Feedback from './components/admin/Feedback';
 
 function App() {
 const location = useLocation();
@@ -53,6 +54,7 @@ const location = useLocation();
         <Route path="users" element={<Users />} />
         <Route path="orders" element={<AdmOrders />} />
         <Route path="products" element={<Products />} />
+        <Route path="feedback" element={<Feedback />} />
         </Route>
         <Route path='/home' element={ <Suspense fallback={<Loader />}> <Homepage /> </Suspense>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
