@@ -1,9 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/Authcontext";
 import { toast } from "react-toastify";
-
 function Login() {
   const navigate = useNavigate();
   const { setUser } = useAuth();
@@ -13,15 +12,16 @@ function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  //checking user from db
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.get("http://localhost:3001/users");
       const user = res.data.find(
-        (u) =>
-          u.email.trim().toLowerCase() === form.email.trim().toLowerCase() &&
-          u.password === form.password
+        (usrdt) =>
+          usrdt.email.trim().toLowerCase() === form.email.trim().toLowerCase() &&
+          usrdt.password === form.password
       );
 
       if (!user) {
@@ -37,10 +37,11 @@ function Login() {
       await axios.patch(`http://localhost:3001/users/${user.id}`, {
         active: true,
       });
-
+      //setting in context and session storage
       setUser({ ...user, active: true });
       sessionStorage.setItem("user", JSON.stringify({ ...user, active: true }));
       toast.success("Login successful!");
+      console.log(user)
 
       if (user.role !== "admin") {
         navigate("/home", { replace: true });
@@ -93,6 +94,9 @@ function Login() {
             Signup here
           </span>
         </p>
+        <p style={{textAlign:"center"}}><Link to ="/home">
+        Go Back
+         </Link> </p>
       </div>
     </div>
   );

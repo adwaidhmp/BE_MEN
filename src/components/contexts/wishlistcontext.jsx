@@ -37,12 +37,10 @@ export const WishlistProvider = ({ children }) => {
       ? await removeFromWishlist(productId)
       : await addToWishlist(productId);
   };
-    const clearWishlist = () => {
-    setWishlist([]); 
-  };
+   
 
   return (
-    <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFromWishlist, toggleWishlist,clearWishlist }}>
+    <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFromWishlist, toggleWishlist}}>
       {children}
     </WishlistContext.Provider>
   );

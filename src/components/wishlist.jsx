@@ -34,7 +34,7 @@ function Wishlist() {
   }
 
   return (
-    <div className="px-4 py-10 bg-gray-100 min-h-screen">
+    <div className="px-4 pt-28 pb-5 sm:pt-10  bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold py-6 text-center">My Wishlist ❤️</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -69,6 +69,7 @@ function Wishlist() {
               {/* Product Details and Buttons */}
               <div className="flex flex-col justify-between flex-1 h-full">
                 <div>
+                  <h2 className="text-base font-semibold text-gray-800">{product.name}</h2>
                   <h2 className="text-base font-semibold text-gray-800">{product.brand}</h2>
                   <p className="text-sm text-gray-500 capitalize">{product.category}</p>
                   <p className="text-sm font-bold text-gray-900">$ {product.price}</p>

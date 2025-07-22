@@ -14,6 +14,7 @@ export default function Products() {
     image: [""],
     rating: "",
     brand: "",
+    description: ""
   });
 
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -119,6 +120,7 @@ export default function Products() {
                 image: [""],
                 rating: "",
                 brand: "",
+                description: "",
               });
             }}
             className="bg-black text-white px-4 py-2 rounded flex items-center gap-2"
@@ -223,6 +225,14 @@ export default function Products() {
             className="border p-2 rounded"
             required
           />
+            <input
+              name="description"
+              value={newProduct.description}
+              onChange={handleInputChange}
+              placeholder="Description"
+              className="border p-2 rounded col-span-1 sm:col-span-2"
+              rows={3}
+            />
           <div className="col-span-1 sm:col-span-2 flex flex-wrap gap-4">
             <button type="submit" className="bg-black text-white px-6 py-2 rounded hover:opacity-90">
               {editingProductId ? "Update" : "Submit"}
@@ -250,6 +260,7 @@ export default function Products() {
               <th className="px-6 py-3 text-left">ID</th>
               <th className="px-6 py-3 text-left">Image</th>
               <th className="px-6 py-3 text-left">Name</th>
+              <th className="px-6 py-3 text-left">Brand</th>
               <th className="px-6 py-3 text-left">Category</th>
               <th className="px-6 py-3 text-left">Price</th>
               <th className="px-6 py-3 text-left">Actions</th>
@@ -262,6 +273,7 @@ export default function Products() {
                 <td className="px-6 py-3">
                   <img src={p.image[0]} alt={p.name} className="w-24 h-16 object-cover rounded" />
                 </td>
+                <td className="px-6 py-3 font-medium">{p.name}</td>
                 <td className="px-6 py-3 font-medium">{p.brand}</td>
                 <td className="px-6 py-3 capitalize">{p.category}</td>
                 <td className="px-6 py-3">${p.price}</td>

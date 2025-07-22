@@ -72,34 +72,36 @@ function Profile({ onClose, profileRef }) {
   return (
     <div
       ref={profileRef}
-      className="fixed top-0 right-0 h-full w-full sm:w-1/3 md:w-1/4 bg-gray-200 shadow-lg z-50 p-6 transform transition-transform duration-300"
+      className="fixed top-0 right-0 h-full w-full sm:w-1/3 md:w-1/4 bg-white/10 backdrop-blur-lg border-l border-white/20 shadow-2xl z-50 p-6 transform transition-transform duration-300 text-black"
     >
       <button
         onClick={onClose}
-        className="absolute top-3 right-3 text-xl font-bold text-gray-500 hover:text-black"
+        className="absolute top-3 right-3 text-2xl font-bold text-black hover:text-red-500"
       >
         ×
       </button>
 
-      <h2 className="text-2xl font-bold mb-6 mt-8 text-center">Profile</h2>
+      {/* <h2 className="text-3xl font-bold mb-6 mt-8 text-center tracking-wide drop-shadow">
+        Profile
+      </h2> */}
 
       {user ? (
         <>
           {/* 👤 Profile Image */}
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center pt-25 mb-4">
             <img
               src={
                 user.profilePicture ||
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSLU5_eUUGBfxfxRd4IquPiEwLbt4E_6RYMw&s"
               }
               alt="Profile"
-              className="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover"
+              className="w-24 h-24 rounded-full border border-cyan-500 shadow-[0_0_20px_rgba(0,255,255,0.4)] object-cover"
             />
           </div>
 
           <div className="text-center mb-6">
-            <p className="mb-1 text-lg font-semibold text-gray-800">{user.name}</p>
-            <p className="text-sm text-gray-600">{user.email}</p>
+            <p className="mb-1 text-xl font-semibold">{user.name}</p>
+            <p className="text-sm text-gray-700 ">{user.email}</p>
           </div>
 
           {isEditing ? (
@@ -109,14 +111,14 @@ function Profile({ onClose, profileRef }) {
                 placeholder="New Name"
                 value={editForm.name}
                 onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                className="w-full px-3 py-2 border rounded"
+                className="w-full px-3 py-2 bg-white/40 border border-cyan-400 rounded text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
               />
               <input
                 name="email"
                 placeholder="New Email"
                 value={editForm.email}
                 onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
-                className="w-full px-3 py-2 border rounded"
+                className="w-full px-3 py-2 bg-white/40 border border-cyan-400 rounded text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
               />
               <input
                 name="password"
@@ -124,11 +126,11 @@ function Profile({ onClose, profileRef }) {
                 placeholder="New Password"
                 value={editForm.password}
                 onChange={(e) => setEditForm({ ...editForm, password: e.target.value })}
-                className="w-full px-3 py-2 border rounded"
+                className="w-full px-3 py-2 bg-white/40 border border-cyan-400 rounded text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
               />
               <button
                 type="submit"
-                className="w-full bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900"
+                className="w-full bg-cyan-500/30 border border-cyan-400 text-black py-2 px-4 rounded hover:bg-cyan-600/40 hover:shadow-[0_0_10px_rgba(0,255,255,0.5)] transition"
               >
                 Save Changes
               </button>
@@ -142,7 +144,7 @@ function Profile({ onClose, profileRef }) {
                     password: user.password || "",
                   });
                 }}
-                className="w-full bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700"
+                className="w-full bg-gray-500/30 border border-gray-400 text-black py-2 px-4 rounded hover:bg-gray-600/40 hover:shadow transition"
               >
                 Cancel
               </button>
@@ -153,30 +155,30 @@ function Profile({ onClose, profileRef }) {
                 <button
                   onClick={() => {
                     setIsEditing(true);
-                    setEditForm({ name: "", email: "", password: "" }); // Fields blank on edit
+                    setEditForm({ name: "", email: "", password: "" });
                   }}
-                  className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
+                  className="bg-white/20 border border-purple-400 text-black py-2 px-4 rounded hover:bg-white/30 hover:shadow transition"
                 >
                   Edit Profile
                 </button>
                 <Link
                   to="/orders"
                   onClick={onClose}
-                  className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
+                  className="bg-white/20 border border-cyan-500 text-black py-2 px-4 rounded text-center hover:bg-white/30 hover:shadow transition"
                 >
                   Orders
                 </Link>
                 <Link
                   to="/wishlist"
                   onClick={onClose}
-                  className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
+                  className="bg-white/20 border border-cyan-500 text-black py-2 px-4 rounded text-center hover:bg-white/30 hover:shadow transition"
                 >
                   Wishlist
                 </Link>
                 <Link
                   to="/cart"
                   onClick={onClose}
-                  className="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 text-center"
+                  className="bg-white/20 border border-cyan-500 text-black py-2 px-4 rounded text-center hover:bg-white/30 hover:shadow transition"
                 >
                   Cart
                 </Link>
@@ -184,7 +186,7 @@ function Profile({ onClose, profileRef }) {
 
               <button
                 onClick={handleLogout}
-                className="bg-red-600 text-white py-2 w-full rounded hover:bg-red-500"
+                className="bg-red-500/30 border border-red-400 text-black py-2 w-full rounded hover:bg-red-600/40 hover:shadow transition"
               >
                 Logout
               </button>
@@ -192,7 +194,7 @@ function Profile({ onClose, profileRef }) {
           )}
         </>
       ) : (
-        <p className="text-center text-gray-600">Loading...</p>
+        <p className="text-center text-black">Loading...</p>
       )}
     </div>
   );

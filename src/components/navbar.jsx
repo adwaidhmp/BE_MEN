@@ -16,8 +16,6 @@ function Navbar() {
   const [srch, setsearch] = useState("");
   const navigate = useNavigate();
 
-
-
   const handleSearch = () => {
     if (srch.trim()) {
       navigate(`/home?search=${encodeURIComponent(srch)}`);
@@ -71,6 +69,8 @@ function Navbar() {
         <div className="flex justify-between w-full md:w-auto items-center md:space-x-6 flex-wrap">
           {/* Left: Wishlist + Cart */}
           <div className="flex items-center space-x-4 order-2 md:order-2">
+
+
             {/* Products */}
             {location.pathname !== "/home" && (
               <Link to="/home" className="hover:text-gray-600 md:mr-4">

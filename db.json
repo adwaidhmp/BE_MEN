@@ -2,9 +2,10 @@
   "products": [
     {
       "id": "1",
-      "name": "Aviator",
+      "name": "Classic Aviator Gold",
       "category": "sunglass",
       "price": 110,
+      "description": "Timeless aviator sunglasses with gold-plated frames and premium UV protection. The iconic teardrop design offers both style and superior eye protection.",
       "image": [
         "/images/sunglass/rayban/rb (1).png",
         "/images/sunglass/rayban/rb (2).png",
@@ -18,9 +19,10 @@
     },
     {
       "id": "2",
-      "name": "Aviator",
+      "name": "Aviator Black Edition",
       "category": "sunglass",
       "price": 90,
+      "description": "Sleek black-framed aviator sunglasses with dark tinted lenses. Perfect for everyday wear with a modern twist on the classic design.",
       "image": [
         "/images/sunglass/rayban2/rb (1).png",
         "/images/sunglass/rayban2/rb (2).png",
@@ -34,9 +36,10 @@
     },
     {
       "id": "3",
-      "name": "Aviator",
+      "name": "Aviator Silver Mirror",
       "category": "sunglass",
       "price": 90,
+      "description": "Contemporary aviator sunglasses featuring silver mirrored lenses and lightweight frames. Combines retro appeal with modern functionality.",
       "image": [
         "/images/sunglass/rayban3/rb (1).png",
         "/images/sunglass/rayban3/rb (2).png",
@@ -50,9 +53,10 @@
     },
     {
       "id": "4",
-      "name": "Aviator",
+      "name": "Police Shield Aviator",
       "category": "sunglass",
       "price": 90,
+      "description": "Bold aviator sunglasses with distinctive Police styling. Features robust construction and polarized lenses for enhanced clarity and protection.",
       "image": [
         "/images/sunglass/police/pl (1).png",
         "/images/sunglass/police/pl (2).png",
@@ -64,9 +68,10 @@
     },
     {
       "id": "5",
-      "name": "Aviator",
+      "name": "Police Urban Aviator",
       "category": "sunglass",
       "price": 110,
+      "description": "Urban-inspired aviator design with modern edge detailing. Premium materials and advanced lens technology for the contemporary lifestyle.",
       "image": [
         "/images/sunglass/police2/pl (1).png",
         "/images/sunglass/police2/pl (2).png",
@@ -78,9 +83,10 @@
     },
     {
       "id": "6",
-      "name": "Aviator",
+      "name": "Police Sport Aviator",
       "category": "sunglass",
       "price": 100,
+      "description": "Sport-oriented aviator sunglasses with enhanced grip and durability. Ideal for active lifestyles with superior comfort and performance.",
       "image": [
         "/images/sunglass/police3/pl (1).png",
         "/images/sunglass/police3/pl (2).png",
@@ -91,9 +97,10 @@
     },
     {
       "id": "7",
-      "name": "Aviator",
+      "name": "Cartier Luxury Aviator",
       "category": "sunglass",
       "price": 90,
+      "description": "Exquisite aviator sunglasses with Cartier's signature luxury craftsmanship. Features premium materials and elegant design details.",
       "image": [
         "/images/sunglass/cartier/crt (1).png",
         "/images/sunglass/cartier/crt (2).png",
@@ -105,9 +112,10 @@
     },
     {
       "id": "8",
-      "name": "Aviator",
+      "name": "Cartier Panthère Aviator",
       "category": "sunglass",
       "price": 100,
+      "description": "Sophisticated aviator design inspired by Cartier's iconic Panthère collection. Combines elegance with exceptional optical quality.",
       "image": [
         "/images/sunglass/cartier2/crt (1).png",
         "/images/sunglass/cartier2/crt (2).png",
@@ -120,9 +128,10 @@
     },
     {
       "id": "9",
-      "name": "Aviator",
+      "name": "Cartier Santos Aviator",
       "category": "sunglass",
       "price": 100,
+      "description": "Premium aviator sunglasses featuring Santos collection elements. Refined craftsmanship meets timeless aviator styling.",
       "image": [
         "/images/sunglass/cartier3/crt (1).png",
         "/images/sunglass/cartier3/crt (2).png",
@@ -136,9 +145,10 @@
     },
     {
       "id": "10",
-      "name": "Aviator",
+      "name": "Prada Linea Rossa Aviator",
       "category": "sunglass",
       "price": 110,
+      "description": "High-performance aviator sunglasses from Prada's Linea Rossa collection. Technical innovation meets Italian design excellence.",
       "image": [
         "/images/sunglass/prada/prd (1).png",
         "/images/sunglass/prada/prd (2).png",
@@ -149,9 +159,10 @@
     },
     {
       "id": "11",
-      "name": "Aviator",
+      "name": "Prada Classic Aviator",
       "category": "sunglass",
       "price": 100,
+      "description": "Elegant aviator sunglasses showcasing Prada's minimalist aesthetic. Quality craftsmanship with understated luxury appeal.",
       "image": [
         "/images/sunglass/prada2/prd (1).png",
         "/images/sunglass/prada2/prd (2).png",
@@ -162,9 +173,10 @@
     },
     {
       "id": "12",
-      "name": "Aviator",
+      "name": "Prada Milano Aviator",
       "category": "sunglass",
       "price": 100,
+      "description": "Contemporary aviator design with Prada's signature Milano styling. Perfect blend of fashion-forward design and functionality.",
       "image": [
         "/images/sunglass/prada3/prd (1).png",
         "/images/sunglass/prada3/prd (2).png",
@@ -175,9 +187,10 @@
     },
     {
       "id": "13",
-      "name": "Aviator",
+      "name": "Gucci GG Buckle Belt",
       "category": "belt",
       "price": 90,
+      "description": "Iconic Gucci belt featuring the classic interlocking GG buckle. Made from premium leather with impeccable Italian craftsmanship.",
       "image": [
         "/images/belt/gucci/gc1.png"
       ],
@@ -186,9 +199,10 @@
     },
     {
       "id": "14",
-      "name": "Aviator",
+      "name": "Gucci Web Stripe Belt",
       "category": "belt",
       "price": 100,
+      "description": "Distinguished Gucci belt with signature green and red web stripe detailing. A timeless accessory that adds luxury to any outfit.",
       "image": [
         "/images/belt/gucci/gc2.png"
       ],
@@ -197,9 +211,10 @@
     },
     {
       "id": "15",
-      "name": "Aviator",
+      "name": "Gucci Double G Belt",
       "category": "belt",
       "price": 110,
+      "description": "Sophisticated Gucci belt with the iconic Double G buckle in polished finish. Premium leather construction with refined elegance.",
       "image": [
         "/images/belt/gucci/gc3.png"
       ],
@@ -208,9 +223,10 @@
     },
     {
       "id": "16",
-      "name": "Aviator",
+      "name": "Hermès H Belt Classic",
       "category": "belt",
       "price": 100,
+      "description": "Timeless Hermès belt featuring the iconic H buckle. Crafted from finest leather with meticulous attention to detail and quality.",
       "image": [
         "/images/belt/hermes/hrm1.png"
       ],
@@ -219,9 +235,10 @@
     },
     {
       "id": "17",
-      "name": "Aviator",
+      "name": "Hermès Constance Belt",
       "category": "belt",
       "price": 100,
+      "description": "Elegant Hermès belt inspired by the Constance collection. Features refined buckle design and exceptional leather quality.",
       "image": [
         "/images/belt/hermes/hrm2.png"
       ],
@@ -230,9 +247,10 @@
     },
     {
       "id": "18",
-      "name": "Aviator",
+      "name": "Hermès Reversible Belt",
       "category": "belt",
       "price": 100,
+      "description": "Versatile Hermès reversible belt offering two looks in one. Premium leather construction with innovative design functionality.",
       "image": [
         "/images/belt/hermes/hrm3.png"
       ],
@@ -241,9 +259,10 @@
     },
     {
       "id": "19",
-      "name": "Aviator",
+      "name": "Louis Vuitton LV Initiales Belt",
       "category": "belt",
       "price": 100,
+      "description": "Classic Louis Vuitton belt with the iconic LV buckle. Features signature monogram canvas and refined leather craftsmanship.",
       "image": [
         "/images/belt/lv/lv (1).png"
       ],
@@ -252,9 +271,10 @@
     },
     {
       "id": "20",
-      "name": "Aviator",
+      "name": "Louis Vuitton Damier Belt",
       "category": "belt",
       "price": 110,
+      "description": "Sophisticated Louis Vuitton belt in signature Damier canvas. Combines heritage pattern with contemporary buckle design.",
       "image": [
         "/images/belt/lv/lv (2).png"
       ],
@@ -263,9 +283,10 @@
     },
     {
       "id": "21",
-      "name": "Aviator",
+      "name": "Louis Vuitton Epi Leather Belt",
       "category": "belt",
       "price": 100,
+      "description": "Premium Louis Vuitton belt in distinctive Epi leather. Features textured finish and modern buckle for contemporary appeal.",
       "image": [
         "/images/belt/lv/lv (3).png"
       ],
@@ -274,9 +295,10 @@
     },
     {
       "id": "22",
-      "name": "Aviator",
+      "name": "Versace Medusa Belt",
       "category": "belt",
       "price": 90,
+      "description": "Bold Versace belt featuring the iconic Medusa head buckle. Italian luxury craftsmanship with distinctive baroque-inspired design.",
       "image": [
         "/images/belt/vers/vrc (1).png"
       ],
@@ -285,9 +307,10 @@
     },
     {
       "id": "23",
-      "name": "Aviator",
+      "name": "Versace Greca Belt",
       "category": "belt",
       "price": 100,
+      "description": "Elegant Versace belt with signature Greca pattern detailing. Combines classical motifs with modern luxury appeal.",
       "image": [
         "/images/belt/vers/vrc (2).png"
       ],
@@ -296,9 +319,10 @@
     },
     {
       "id": "24",
-      "name": "Aviator",
+      "name": "Versace Palazzo Belt",
       "category": "belt",
       "price": 110,
+      "description": "Luxurious Versace belt from the Palazzo collection. Features ornate buckle design and premium leather construction.",
       "image": [
         "/images/belt/vers/vrc (3).png"
       ],
@@ -307,9 +331,10 @@
     },
     {
       "id": "25",
-      "name": "cap",
+      "name": "Balenciaga Logo Cap",
       "category": "cap",
       "price": 80,
+      "description": "Contemporary Balenciaga cap with bold logo embroidery. Street-style inspired design with premium cotton construction.",
       "image": [
         "/images/caps/bal/bal (1).png"
       ],
@@ -330,9 +355,10 @@
     },
     {
       "id": "26",
-      "name": "cap",
+      "name": "Balenciaga Essential Cap",
       "category": "cap",
       "price": 100,
+      "description": "Minimalist Balenciaga cap with subtle branding. Perfect for everyday wear with modern streetwear aesthetic.",
       "image": [
         "/images/caps/bal/bal (2).png"
       ],
@@ -353,9 +379,10 @@
     },
     {
       "id": "27",
-      "name": "cap",
+      "name": "Balenciaga Speed Cap",
       "category": "cap",
       "price": 110,
+      "description": "Dynamic Balenciaga cap inspired by the Speed collection. Features technical fabric and performance-oriented design.",
       "image": [
         "/images/caps/bal/bal (3).png"
       ],
@@ -376,9 +403,10 @@
     },
     {
       "id": "28",
-      "name": "cap",
+      "name": "Gucci GG Canvas Cap",
       "category": "cap",
       "price": 90,
+      "description": "Classic Gucci cap featuring signature GG canvas pattern. Timeless design with Italian craftsmanship and comfort fit.",
       "image": [
         "/images/caps/gucci/gc1.jpg"
       ],
@@ -399,9 +427,10 @@
     },
     {
       "id": "29",
-      "name": "cap",
+      "name": "Gucci Web Stripe Cap",
       "category": "cap",
       "price": 90,
+      "description": "Iconic Gucci cap with signature green and red web stripe. Classic design meets contemporary streetwear styling.",
       "image": [
         "/images/caps/gucci/gc2.png"
       ],
@@ -422,9 +451,10 @@
     },
     {
       "id": "30",
-      "name": "cap",
+      "name": "Gucci Ace Cap",
       "category": "cap",
       "price": 110,
+      "description": "Stylish Gucci cap inspired by the popular Ace sneaker line. Features premium materials and distinctive branding.",
       "image": [
         "/images/caps/gucci/gc3.png"
       ],
@@ -445,9 +475,10 @@
     },
     {
       "id": "31",
-      "name": "cap",
+      "name": "Louis Vuitton Monogram Cap",
       "category": "cap",
       "price": 100,
+      "description": "Luxury Louis Vuitton cap featuring the iconic monogram pattern. Premium craftsmanship with French fashion heritage.",
       "image": [
         "/images/caps/lv/lv (1).png"
       ],
@@ -468,9 +499,10 @@
     },
     {
       "id": "32",
-      "name": "cap",
+      "name": "Off-White Industrial Cap",
       "category": "cap",
       "price": 100,
+      "description": "Edgy Off-White cap with signature industrial belt detailing. Street-luxe design with distinctive brand aesthetics.",
       "image": [
         "/images/caps/off/off (1).jpg"
       ],
@@ -491,9 +523,10 @@
     },
     {
       "id": "33",
-      "name": "cap",
+      "name": "Off-White Arrows Cap",
       "category": "cap",
       "price": 110,
+      "description": "Statement Off-White cap featuring iconic arrow motifs. Contemporary streetwear with high-fashion influence.",
       "image": [
         "/images/caps/off/off (2).jpg"
       ],
@@ -514,9 +547,10 @@
     },
     {
       "id": "34",
-      "name": "cap",
+      "name": "Off-White Diagonal Cap",
       "category": "cap",
       "price": 110,
+      "description": "Bold Off-White cap with signature diagonal stripe pattern. Urban luxury with avant-garde design elements.",
       "image": [
         "/images/caps/off/off (3).jpg"
       ],
@@ -537,9 +571,10 @@
     },
     {
       "id": "35",
-      "name": "Aviator",
+      "name": "Audemars Piguet Royal Oak",
       "category": "watch",
       "price": 100,
+      "description": "Legendary Audemars Piguet Royal Oak watch with octagonal bezel. Iconic design combining luxury materials with Swiss precision.",
       "image": [
         "/images/watch/aud/au.jpg"
       ],
@@ -548,9 +583,10 @@
     },
     {
       "id": "36",
-      "name": "Aviator",
+      "name": "Audemars Piguet Code 11.59",
       "category": "watch",
       "price": 100,
+      "description": "Contemporary Audemars Piguet watch from the Code 11.59 collection. Modern architecture meets traditional watchmaking excellence.",
       "image": [
         "/images/watch/aud/au2.jpg"
       ],
@@ -559,9 +595,10 @@
     },
     {
       "id": "37",
-      "name": "Aviator",
+      "name": "Audemars Piguet Millenary",
       "category": "watch",
       "price": 110,
+      "description": "Distinctive Audemars Piguet Millenary with oval case design. Showcases intricate movement through open dial configuration.",
       "image": [
         "/images/watch/aud/au3.jpg"
       ],
@@ -570,9 +607,10 @@
     },
     {
       "id": "38",
-      "name": "Aviator",
+      "name": "Omega Speedmaster Professional",
       "category": "watch",
       "price": 100,
+      "description": "Iconic Omega Speedmaster Professional, the legendary moonwatch. Chronograph functionality with space exploration heritage.",
       "image": [
         "/images/watch/omega/omg1.jpg"
       ],
@@ -581,9 +619,10 @@
     },
     {
       "id": "39",
-      "name": "Aviator",
+      "name": "Omega Seamaster Planet Ocean",
       "category": "watch",
       "price": 100,
+      "description": "Professional Omega Seamaster Planet Ocean diving watch. Superior water resistance with robust construction for ocean adventures.",
       "image": [
         "/images/watch/omega/omg2.jpg"
       ],
@@ -592,9 +631,10 @@
     },
     {
       "id": "40",
-      "name": "Aviator",
+      "name": "Omega Constellation",
       "category": "watch",
       "price": 90,
+      "description": "Elegant Omega Constellation with distinctive claw design. Precision timepiece combining luxury aesthetics with technical innovation.",
       "image": [
         "/images/watch/omega/omg3.jpg"
       ],
@@ -603,9 +643,10 @@
     },
     {
       "id": "41",
-      "name": "Aviator",
+      "name": "Patek Philippe Calatrava",
       "category": "watch",
       "price": 90,
+      "description": "Timeless Patek Philippe Calatrava dress watch. Epitome of elegant simplicity with exceptional Swiss craftsmanship.",
       "image": [
         "/images/watch/patek/patek1.jpg"
       ],
@@ -614,9 +655,10 @@
     },
     {
       "id": "42",
-      "name": "Aviator",
+      "name": "Patek Philippe Nautilus",
       "category": "watch",
       "price": 100,
+      "description": "Prestigious Patek Philippe Nautilus sports watch. Distinctive porthole design with luxury sports watch functionality.",
       "image": [
         "/images/watch/patek/patek2.jpg"
       ],
@@ -625,9 +667,10 @@
     },
     {
       "id": "43",
-      "name": "Aviator",
+      "name": "Patek Philippe Aquanaut",
       "category": "watch",
       "price": 110,
+      "description": "Contemporary Patek Philippe Aquanaut with rounded octagonal case. Modern luxury sports watch with tropical composite strap.",
       "image": [
         "/images/watch/patek/patek3.jpg"
       ],
@@ -636,9 +679,10 @@
     },
     {
       "id": "44",
-      "name": "Aviator",
+      "name": "Rolex Submariner",
       "category": "watch",
       "price": 100,
+      "description": "Legendary Rolex Submariner diving watch. Waterproof excellence with iconic rotating bezel and luminescent markers.",
       "image": [
         "/images/watch/rolex/ro.jpg"
       ],
@@ -647,9 +691,10 @@
     },
     {
       "id": "45",
-      "name": "Aviator",
+      "name": "Rolex Daytona",
       "category": "watch",
       "price": 110,
+      "description": "Iconic Rolex Daytona chronograph designed for racing professionals. Precision timing with legendary motorsport heritage.",
       "image": [
         "/images/watch/rolex/ro1.jpg"
       ],
@@ -658,9 +703,10 @@
     },
     {
       "id": "46",
-      "name": "Aviator",
+      "name": "Rolex GMT-Master II",
       "category": "watch",
       "price": 100,
+      "description": "Professional Rolex GMT-Master II for world travelers. Dual timezone functionality with distinctive rotating bezel.",
       "image": [
         "/images/watch/rolex/ro2.jpg"
       ],
@@ -669,9 +715,10 @@
     },
     {
       "id": "47",
-      "name": "Aviator",
+      "name": "Richard Mille RM 035",
       "category": "watch",
       "price": 100,
+      "description": "Ultra-lightweight Richard Mille RM 035 with carbon case. High-tech materials meet avant-garde horological innovation.",
       "image": [
         "/images/watch/richard/rc.jpg"
       ],
@@ -680,9 +727,10 @@
     },
     {
       "id": "48",
-      "name": "Aviator",
+      "name": "Richard Mille RM 11-03",
       "category": "watch",
       "price": 110,
+      "description": "Sophisticated Richard Mille RM 11-03 chronograph. Titanium construction with skeletonized automatic movement.",
       "image": [
         "/images/watch/richard/rc2.jpg"
       ],
@@ -691,9 +739,10 @@
     },
     {
       "id": "49",
-      "name": "Aviator",
+      "name": "Jacob & Co Astronomia",
       "category": "watch",
       "price": 100,
+      "description": "Spectacular Jacob & Co Astronomia with rotating complications. Astronomical complications in a mesmerizing dome design.",
       "image": [
         "/images/watch/richard/rc3.jpg"
       ],
@@ -702,9 +751,10 @@
     },
     {
       "id": "50",
-      "name": "Aviator",
+      "name": "Bellroy Note Sleeve",
       "category": "wallet",
       "price": 100,
+      "description": "Slim Bellroy wallet crafted from premium leather. Minimalist design with efficient organization for cards and cash.",
       "image": [
         "/images/wallet/bellory.jpg"
       ],
@@ -713,9 +763,10 @@
     },
     {
       "id": "51",
-      "name": "Aviator",
+      "name": "Bottega Veneta Intrecciato Wallet",
       "category": "wallet",
       "price": 110,
+      "description": "Luxurious Bottega Veneta wallet featuring signature intrecciato weave. Italian craftsmanship with distinctive leather texture.",
       "image": [
         "/images/wallet/btg.jpg"
       ],
@@ -724,300 +775,327 @@
     },
     {
       "id": "52",
-      "name": "Aviator",
+      "name": "Dunhill Signature Leather Wallet",
       "category": "wallet",
       "price": 100,
       "image": [
         "/images/wallet/dunhill.jpg"
       ],
       "rating": 4.5,
-      "brand": "Dunhill"
+      "brand": "Dunhill",
+      "description": "Crafted from premium Italian leather, this sophisticated Dunhill wallet features multiple card slots, a bill compartment, and the iconic Dunhill logo. Perfect for the discerning gentleman who values quality and timeless style."
     },
     {
       "id": "53",
-      "name": "Aviator",
+      "name": "Gucci GG Monogram Bi-fold Wallet",
       "category": "wallet",
       "price": 110,
       "image": [
         "/images/wallet/gucci.jpg"
       ],
       "rating": 4.5,
-      "brand": "Gucci"
+      "brand": "Gucci",
+      "description": "This luxurious Gucci wallet showcases the classic GG monogram pattern in rich leather. Features multiple card holders, cash compartments, and exquisite craftsmanship that embodies Italian luxury fashion."
     },
     {
       "id": "54",
-      "name": "Aviator",
+      "name": "Louis Vuitton Damier Graphite Wallet",
       "category": "wallet",
       "price": 110,
       "image": [
         "/images/wallet/lv.jpg"
       ],
       "rating": 4.5,
-      "brand": "LouisVuitton"
+      "brand": "LouisVuitton",
+      "description": "Elegant and sophisticated, this Louis Vuitton wallet features the iconic Damier Graphite canvas with leather trim. Offers ample storage for cards and cash while maintaining a sleek, professional appearance."
     },
     {
       "id": "55",
-      "name": "Aviator",
+      "name": "Montblanc Meisterstück Leather Wallet",
       "category": "wallet",
       "price": 100,
       "image": [
         "/images/wallet/montblanc.jpg"
       ],
       "rating": 4.5,
-      "brand": "Montblanc"
+      "brand": "Montblanc",
+      "description": "The epitome of German craftsmanship, this Montblanc wallet is made from fine European leather with the signature snowcap logo. Features intelligent organization with multiple compartments for the modern professional."
     },
     {
       "id": "56",
-      "name": "Aviator",
+      "name": "Prada Saffiano Leather Bi-fold Wallet",
       "category": "wallet",
       "price": 90,
       "image": [
         "/images/wallet/prada.jpg"
       ],
       "rating": 4.5,
-      "brand": "Prada"
+      "brand": "Prada",
+      "description": "Minimalist elegance defines this Prada wallet crafted from durable Saffiano leather. The cross-hatch texture and triangular metal logo represent contemporary Italian design with practical functionality."
     },
     {
       "id": "57",
-      "name": "Aviator",
+      "name": "Salvatore Ferragamo Gancini Wallet",
       "category": "wallet",
       "price": 100,
       "image": [
         "/images/wallet/salvatore.jpg"
       ],
       "rating": 4.5,
-      "brand": "Salvatore"
+      "brand": "Salvatore",
+      "description": "This refined Salvatore Ferragamo wallet features the iconic Gancini hardware detail and supple calfskin leather. Combines traditional Italian craftsmanship with modern functionality for the style-conscious individual."
     },
     {
       "id": "58",
-      "name": "Aviator",
+      "name": "Tom Ford Icon Leather Wallet",
       "category": "wallet",
       "price": 110,
       "image": [
         "/images/wallet/tomford.jpg"
       ],
       "rating": 4.5,
-      "brand": "Tomfrod"
+      "brand": "Tomfrod",
+      "description": "Sleek and sophisticated, this Tom Ford wallet embodies modern luxury with its clean lines and premium leather construction. Features the signature T-bar logo and thoughtful organization for cards and cash."
     },
     {
       "id": "59",
-      "name": "Aviator",
+      "name": "Tumi Alpha Slim Wallet",
       "category": "wallet",
       "price": 100,
       "image": [
         "/images/wallet/tumi.jpg"
       ],
       "rating": 4.5,
-      "brand": "Tumi"
+      "brand": "Tumi",
+      "description": "Engineered for the modern traveler, this Tumi wallet combines durability with style. Features RFID blocking technology, multiple card slots, and Tumi's signature ballistic nylon construction for ultimate protection."
     },
     {
       "id": "60",
-      "name": "Aviator",
+      "name": "Armani Code Eau de Toilette",
       "category": "spray",
       "price": 90,
       "image": [
         "/images/spray/armani.jpg"
       ],
       "rating": 4.5,
-      "brand": "Armani"
+      "brand": "Armani",
+      "description": "A sophisticated masculine fragrance with notes of bergamot, lemon, and olive blossom. This Armani signature scent offers a perfect balance of freshness and sensuality, ideal for both day and evening wear."
     },
     {
       "id": "61",
-      "name": "Aviator",
+      "name": "Chanel Bleu de Chanel",
       "category": "spray",
       "price": 110,
       "image": [
         "/images/spray/channel.jpg"
       ],
       "rating": 4.5,
-      "brand": "Channel"
+      "brand": "Channel",
+      "description": "An aromatic-woody fragrance that captures the spirit of freedom. Bleu de Chanel combines citrus freshness with aromatic woods and warm cedar, creating a timeless scent that defines modern masculinity."
     },
     {
       "id": "62",
-      "name": "Aviator",
+      "name": "Creed Aventus",
       "category": "spray",
       "price": 110,
       "image": [
         "/images/spray/creed.jpg"
       ],
       "rating": 4.5,
-      "brand": "Creed"
+      "brand": "Creed",
+      "description": "The legendary fragrance inspired by success and strength. Creed Aventus features top notes of pineapple and bergamot with a heart of birch and patchouli, creating an unforgettable and commanding presence."
     },
     {
       "id": "63",
-      "name": "Aviator",
+      "name": "Dior Sauvage Eau de Parfum",
       "category": "spray",
       "price": 100,
       "image": [
         "/images/spray/dior.jpg"
       ],
       "rating": 4.5,
-      "brand": "Dior"
+      "brand": "Dior",
+      "description": "A radically fresh composition with calabrian bergamot and ambroxan. Dior Sauvage embodies untamed wilderness and raw magnetism, making it one of the most popular contemporary fragrances for men."
     },
     {
       "id": "64",
-      "name": "Aviator",
+      "name": "Le Labo Santal 33",
       "category": "spray",
       "price": 100,
       "image": [
         "/images/spray/le labo.jpg"
       ],
       "rating": 4.5,
-      "brand": "Le Labo"
+      "brand": "Le Labo",
+      "description": "An iconic unisex fragrance featuring Australian sandalwood, cardamom, and violet. Santal 33 has become a cult favorite for its unique, woody composition that evokes the American West with sophistication."
     },
     {
       "id": "65",
-      "name": "Aviator",
+      "name": "Louis Vuitton Ombre Nomade",
       "category": "spray",
       "price": 110,
       "image": [
         "/images/spray/lv.jpg"
       ],
       "rating": 4.5,
-      "brand": "LouisVuitton"
+      "brand": "LouisVuitton",
+      "description": "A luxurious oriental fragrance centered around precious oud wood. This sophisticated scent blends rose, saffron, and benzoin to create an opulent and mysterious fragrance that embodies luxury travel."
     },
     {
       "id": "66",
-      "name": "Aviator",
+      "name": "Cartier Love Ring",
       "category": "rings",
       "price": 90,
       "image": [
         "/images/rings/crt.png"
       ],
       "rating": 4.5,
-      "brand": "Cartier"
+      "brand": "Cartier",
+      "description": "The iconic Cartier Love ring in 18k gold, featuring the signature screw motifs. A symbol of unbreakable love and commitment, this timeless piece represents the pinnacle of French jewelry craftsmanship."
     },
     {
       "id": "67",
-      "name": "Aviator",
+      "name": "Gucci Interlocking G Ring",
       "category": "rings",
       "price": 110,
       "image": [
         "/images/rings/gucci.png"
       ],
       "rating": 4.5,
-      "brand": "Gucci"
+      "brand": "Gucci",
+      "description": "A bold statement piece featuring the iconic interlocking G logo in aged sterling silver. This contemporary ring combines Italian craftsmanship with modern design, perfect for those who appreciate luxury with edge."
     },
     {
       "id": "68",
-      "name": "Aviator",
+      "name": "Tiffany & Co. T1 Ring",
       "category": "rings",
       "price": 100,
       "image": [
         "/images/rings/tiffany.png"
       ],
       "rating": 4.5,
-      "brand": "Tiffany"
+      "brand": "Tiffany",
+      "description": "Sleek and modern, this Tiffany ring showcases clean geometric lines in precious metal. The minimalist design reflects contemporary sophistication while maintaining the timeless elegance Tiffany & Co. is known for."
     },
     {
       "id": "69",
-      "name": "Aviator",
+      "name": "Tom Wood Oval Ring",
       "category": "rings",
       "price": 100,
       "image": [
         "/images/rings/tomwood.png"
       ],
       "rating": 4.5,
-      "brand": "Tomwood"
+      "brand": "Tomwood",
+      "description": "Scandinavian minimalism at its finest, this Tom Wood ring features a distinctive oval shape with clean, architectural lines. Crafted from premium materials, it represents modern Nordic design philosophy."
     },
     {
       "id": "70",
-      "name": "Aviator",
+      "name": "Versace Medusa Ring",
       "category": "rings",
       "price": 110,
       "image": [
         "/images/rings/vrc.png"
       ],
       "rating": 4.5,
-      "brand": "Versace"
+      "brand": "Versace",
+      "description": "Bold and opulent, this Versace ring features the iconic Medusa head emblem. Crafted with Italian flair, it embodies the brand's luxurious and daring aesthetic, perfect for making a powerful statement."
     },
     {
       "id": "71",
-      "name": "Aviator",
+      "name": "Bulgari B.zero1 Chain Necklace",
       "category": "chains",
       "price": 90,
       "image": [
         "/images/chains/bulgari.png"
       ],
       "rating": 4.5,
-      "brand": "Bulgari"
+      "brand": "Bulgari",
+      "description": "The iconic B.zero1 design in a sophisticated chain necklace. This Bulgari piece combines Roman architectural inspiration with contemporary luxury, featuring the brand's signature spiral motif in precious metal."
     },
     {
       "id": "72",
-      "name": "Aviator",
+      "name": "Cartier Panthère Chain",
       "category": "chains",
       "price": 100,
       "image": [
         "/images/chains/cartier.png"
       ],
       "rating": 4.5,
-      "brand": "Cartier"
+      "brand": "Cartier",
+      "description": "An elegant chain necklace inspired by Cartier's legendary Panthère collection. Features intricate link details and the unmistakable craftsmanship that has made Cartier the jeweler of choice for royalty."
     },
     {
       "id": "73",
-      "name": "Aviator",
+      "name": "Gucci Lion Head Chain",
       "category": "chains",
       "price": 100,
       "image": [
         "/images/chains/guci.png"
       ],
       "rating": 4.5,
-      "brand": "Gucci"
+      "brand": "Gucci",
+      "description": "A bold statement necklace featuring Gucci's signature lion head motif. This chunky chain combines street-style aesthetics with luxury materials, representing the brand's contemporary and rebellious spirit."
     },
     {
       "id": "74",
-      "name": "Aviator",
+      "name": "Tiffany & Co. Return to Tiffany Chain",
       "category": "chains",
       "price": 90,
       "image": [
         "/images/chains/tiffany&co.png"
       ],
       "rating": 4.5,
-      "brand": "Tiffany and Co"
+      "brand": "Tiffany and Co",
+      "description": "The classic Return to Tiffany collection in a sleek chain necklace. Features the iconic oval tag with Tiffany engraving, representing timeless American luxury and the romance of New York City."
     },
     {
       "id": "75",
-      "name": "Aviator",
+      "name": "Tom Wood Curb Chain",
       "category": "chains",
       "price": 100,
       "image": [
         "/images/chains/tomwood.png"
       ],
       "rating": 4.5,
-      "brand": "Tomwood"
+      "brand": "Tomwood",
+      "description": "A contemporary take on the classic curb chain, featuring Tom Wood's signature Scandinavian minimalism. The clean lines and premium materials make this piece both modern and timeless."
     },
     {
       "id": "76",
-      "name": "cap",
+      "name": "Jack & Jones Premium Baseball Cap",
       "category": "cap",
       "price": 70,
       "image": [
         "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQQEI8a1iMg3y1jjIObUQaGZr6LGeboIWLiuKUo_EbwIjjxSw8vBbqUnw7gFEgG0MCI6m-OFE_ESyP0tQD1x_5wpaST_P8Lu-RfkvNYdWeuTCRTOT-PvkC-bw"
       ],
       "rating": 4,
-      "brand": "jack and jones"
+      "brand": "jack and jones",
+      "description": "A versatile baseball cap crafted from premium cotton twill. Features an adjustable strap, curved brim, and subtle branding. Perfect for casual wear and outdoor activities, combining comfort with contemporary style."
     },
     {
       "id": "77",
-      "name": "watch",
+      "name": "Bulgari Octo Finissimo Watch",
       "category": "watch",
       "price": 120,
       "image": [
         "https://img.tatacliq.com/images/i24//658Wx734H/MP000000026467678_658Wx734H_202505072040391.jpeg"
       ],
       "rating": 4.8,
-      "brand": "Bulgari"
+      "brand": "Bulgari",
+      "description": "The ultra-thin Octo Finissimo represents the pinnacle of watchmaking innovation. This masterpiece features Roman architectural inspiration with a sleek octagonal case, automatic movement, and exceptional finishing that defines modern luxury horology."
     },
     {
       "id": "78",
-      "name": "watch",
+      "name": "Jacob & Co. Astronomia Casino Watch",
       "category": "watch",
       "price": 150,
       "image": [
         "https://m.media-amazon.com/images/I/61OheNjhVAL._SX679_.jpg"
       ],
       "rating": 4,
-      "brand": "jacob and co"
+      "brand": "jacob and co",
+      "description": "An extraordinary timepiece that combines haute horlogerie with entertainment. Features a fully functional roulette wheel within the movement, showcasing Jacob & Co's innovative approach to luxury watchmaking with spectacular visual effects and mechanical complexity."
     }
   ],
   "users": [
@@ -1500,27 +1578,115 @@
       "password": "jithin@gmail.com",
       "role": "user",
       "wishlist": [
-        "25",
         "33",
         "32",
-        "34"
+        "34",
+        "67",
+        "2",
+        "3"
       ],
       "cart": [
         {
+          "id": "61",
+          "quantity": 1
+        },
+        {
+          "id": "62",
+          "quantity": 2
+        },
+        {
+          "id": "63",
+          "quantity": 2
+        }
+      ],
+      "order": [
+        {
           "id": "33",
-          "quantity": 3
+          "quantity": 3,
+          "orderId": "1753169394398-0",
+          "date": "7/22/2025, 12:59:54 PM",
+          "price": "330.00",
+          "category": "cap",
+          "status": "shipped",
+          "address": "Abcd"
         },
         {
           "id": "32",
-          "quantity": 6
+          "quantity": 6,
+          "orderId": "1753169394398-1",
+          "date": "7/22/2025, 12:59:54 PM",
+          "price": "600.00",
+          "category": "cap",
+          "status": "shipped",
+          "address": "Abcd"
+        },
+        {
+          "id": "3",
+          "quantity": 1,
+          "orderId": "1753169394398-2",
+          "date": "7/22/2025, 12:59:54 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "4",
+          "quantity": 1,
+          "orderId": "1753169394398-3",
+          "date": "7/22/2025, 12:59:54 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "5",
+          "quantity": 1,
+          "orderId": "1753169394398-4",
+          "date": "7/22/2025, 12:59:54 PM",
+          "price": "110.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "6",
+          "quantity": 1,
+          "orderId": "1753169394398-5",
+          "date": "7/22/2025, 12:59:54 PM",
+          "price": "100.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "4",
+          "quantity": 1,
+          "orderId": "1753170132650-0",
+          "date": "7/22/2025, 1:12:12 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "asdasdasdas"
+        },
+        {
+          "id": "10",
+          "quantity": 1,
+          "orderId": "1753170152463-0",
+          "date": "7/22/2025, 1:12:32 PM",
+          "price": "110.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "ddddddddddddddddddddddddddddd"
         }
       ],
-      "order": [],
       "blocked": false,
       "active": true,
       "reviews": [
         "Nice Products"
-      ]
+      ],
+      "address": "ddddddddddddddddddddddddddddd"
     }
   ]
 }

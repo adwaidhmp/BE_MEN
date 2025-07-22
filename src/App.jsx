@@ -17,22 +17,24 @@ import Profile from './components/profile'
 import Signup from './components/signup'
 import { AuthProvider } from './components/contexts/Authcontext'
 import Payment from './components/payment'
-import LoginRoute from './components/contexts/Loginroute'
-import ProtectedRoute from './components/contexts/protectedroutes'
+import LoginRoute from './components/Routes/Loginroute'
+import ProtectedRoute from './components/Routes/protectedroutes'
 import Contact from './components/contact'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminRoute from './components/Routes/AdminRoute'
 const AdminLayout = lazy(() => import('./components/admin/AdminLayout'));
-import AdminRoute from './components/admin/AdminRoute'
-import Dashboard from './components/admin/Dashboard'
-import Users from './components/admin/Admuser'
-import AdmOrders from './components/admin/Admorders'
-import Products from './components/admin/Admproducts'
+const Dashboard =lazy(()=>import( './components/admin/Dashboard'));
+const Users =lazy(()=>import ('./components/admin/Admuser'));
+const AdmOrders =lazy(()=>import ( './components/admin/Admorders'))
+const Products =lazy(()=>import ( './components/admin/Admproducts'))
+const Feedback =lazy(()=>import ( './components/admin/Feedback'));
 import NotFound from './components/Notfound'
 import Landing from './components/Landing'
-import Feedback from './components/admin/Feedback';
+
 
 function App() {
+ 
 const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin")|| location.pathname === "/"
   || location.pathname === "/login"|| location.pathname === "/signup";
@@ -49,12 +51,11 @@ const location = useLocation();
     {!isAdminRoute && <Navbar />}
       <Routes>
       <Route path='/admin' element={ <Suspense fallback={<Loader />}> <AdminRoute><AdminLayout /></AdminRoute> </Suspense>}>
-
-        <Route index element={<Dashboard />} />
-        <Route path="users" element={<Users />} />
-        <Route path="orders" element={<AdmOrders />} />
-        <Route path="products" element={<Products />} />
-        <Route path="feedback" element={<Feedback />} />
+        <Route index element={<Suspense fallback={<Loader />}> <Dashboard /> </Suspense>} />
+        <Route path="users" element={<Suspense fallback={<Loader />}> <Users /> </Suspense>} />
+        <Route path="orders" element={<Suspense fallback={<Loader />}> <AdmOrders /></Suspense>} />
+        <Route path="products" element={<Suspense fallback={<Loader />}> <Products /></Suspense>} />
+        <Route path="feedback" element={<Suspense fallback={<Loader />}> <Feedback /></Suspense>} />
         </Route>
         <Route path='/home' element={ <Suspense fallback={<Loader />}> <Homepage /> </Suspense>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>

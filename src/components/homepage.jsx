@@ -93,7 +93,7 @@ function Homepage() {
 
   return (
     <>
-      <div className="bg-gray-100 min-h-screen sm:px-6 pt-35 text-gray-800">
+      <div className="bg-gray-100 min-h-screen sm:px-6 pt-38 text-gray-800">
         <h1 className="text-3xl font-bold mb-8 text-center">
           Explore Men's Accessories
         </h1>
@@ -182,13 +182,14 @@ function Homepage() {
                   <div
                     key={product.id}
                     onClick={() => navigate(`/product/${product.id}`)}
-                    className="relative bg-white p-2 rounded-lg shadow cursor-pointer hover:shadow-2xl transition"
+                    className="relative bg-white p-2 rounded-lg shadow cursor-pointer hover:shadow-black/70 transition"
                   >
                     <img
                       src={product.image[0]}
                       alt={product.name}
-                      className="h-24 sm:h-28 w-full object-cover rounded mb-2"
+                      className="h-24 sm:h-28 w-full object-cover rounded mb-2 transition-transform duration-300 transform hover:scale-105"
                     />
+                    <h1 className="font-semibold text-sm">{product.name}</h1>
                     <h2 className="font-semibold text-sm">{product.brand}</h2>
                     <p className="text-gray-600 text-xs">{product.category}</p>
                     <p className="text-gray-800 font-bold text-sm">${product.price}</p>

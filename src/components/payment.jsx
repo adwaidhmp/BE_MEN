@@ -1,16 +1,36 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { OrderContext } from "./contexts/ordercontext";
+import { useAuth } from "./contexts/Authcontext";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 function Payment() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { placeOrder } = useContext(OrderContext);
+  const { user } = useAuth();
 
   const [address, setAddress] = useState("");
+  const [useOld, setUseOld] = useState(false);
+  const [oldAddress, setOldAddress] = useState("");
 
   const product = state?.product;
+
+  useEffect(() => {
+    const fetchUserAddress = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3001/users/${user.id}`);
+        if (res.data.address) {
+          setOldAddress(res.data.address);
+        }
+      } catch (error) {
+        console.error("Failed to fetch old address", error);
+      }
+    };
+
+    if (user?.id) fetchUserAddress();
+  }, [user]);
 
   if (!product) {
     return (
@@ -21,8 +41,9 @@ function Payment() {
   }
 
   const handlePayment = async () => {
-    
-    if (!address.trim()) {
+    const finalAddress = useOld && oldAddress ? oldAddress : address;
+
+    if (!finalAddress.trim()) {
       toast.error("Please enter a delivery address");
       return;
     }
@@ -33,16 +54,25 @@ function Payment() {
         quantity: p.quantity || 1,
         price: (parseFloat(p.price) * (p.quantity || 1)).toFixed(2),
         category: p.category || "",
-        address, // ✅ attach address here to each order item
+        address: finalAddress,
       })
     );
 
     try {
       await placeOrder(productsToOrder);
+
+      // optionally update user's address in JSON DB if it's a new address
+      if (!useOld && address.trim()) {
+        await axios.patch(`http://localhost:3001/users/${user.id}`, {
+          address,
+        });
+      }
+
       navigate("/orders", { replace: true });
       toast.success("Order Placed");
     } catch (error) {
       console.error("Error processing payment:", error);
+      toast.error("Something went wrong");
     }
   };
 
@@ -62,7 +92,7 @@ function Payment() {
               className="w-25 h-16 object-cover rounded"
             />
             <div>
-              <p className="font-semibold text-gray-800">{p.brand}</p>
+              <p className="font-semibold text-gray-800">{p.name}</p>
               <p className="text-gray-600 text-sm">
                 ${p.price} × {p.quantity || 1} ={" "}
                 <strong>${(p.price * p.quantity).toFixed(2)}</strong>
@@ -72,22 +102,38 @@ function Payment() {
         ))}
       </div>
 
-      {/* Address Field */}
-      <div className="mt-6">
-        <label htmlFor="address" className="block font-semibold mb-1">
-          Delivery Address
-        </label>
-        <textarea
-          id="address"
-          rows="3"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          className="w-full border rounded p-2"
-          placeholder="Enter your full delivery address"
-        ></textarea>
-      </div>
+      {/* Old or New Address */}
+      {oldAddress && (
+        <div className="mt-6">
+          <label className="font-semibold">Use saved address?</label>
+          <div className="flex items-center gap-3 mt-2">
+            <input
+              type="checkbox"
+              checked={useOld}
+              onChange={(e) => setUseOld(e.target.checked)}
+            />
+            <span className="text-gray-700">{oldAddress}</span>
+          </div>
+        </div>
+      )}
 
-      {/* Pay Now */}
+      {/* New Address Input */}
+      {!useOld && (
+        <div className="mt-4">
+          <label htmlFor="address" className="block font-semibold mb-1">
+            Enter New Address
+          </label>
+          <textarea
+            id="address"
+            rows="3"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="w-full border rounded p-2"
+            placeholder="Enter your full delivery address"
+          ></textarea>
+        </div>
+      )}
+
       <div className="mt-6">
         <button
           onClick={handlePayment}

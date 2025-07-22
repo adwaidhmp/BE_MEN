@@ -43,7 +43,7 @@ function Orders() {
   }
 
   return (
-    <div className="px-4 py-20 bg-gray-100 min-h-screen">
+    <div className="px-4 pt-35 pb-5 sm:pt-15 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold mb-6 text-center">Your Orders 🧾</h1>
       <div className="flex flex-col items-center gap-6">
         {orderProducts.map((order) => (
@@ -58,6 +58,7 @@ function Orders() {
               className="w-50 h-24 object-cover rounded"
             />
             <div className="flex-1">
+              <h2 className="font-semibold text-md">{order.name}</h2>
               <h2 className="font-semibold text-md">{order.brand}</h2>
               <p className="text-sm text-gray-600">{order.category}</p>
               <p className="text-sm text-gray-700">Quantity: {order.quantity}</p>

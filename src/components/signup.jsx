@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 function Signup() {
   const navigate = useNavigate();
-
+  //validation
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(2, "Name must be at least 2 characters")
@@ -19,6 +19,7 @@ function Signup() {
       .required("Password is required"),
   });
 
+  //posting user with axios
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -32,6 +33,7 @@ function Signup() {
         const userExists = res.data.find((u) => u.email === values.email);
         if (userExists) {
           toast.success("You already have an account");
+          navigate("/login");
           return;
         }
         await axios.post("http://localhost:3001/users", {
