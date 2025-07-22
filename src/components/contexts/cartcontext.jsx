@@ -20,17 +20,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = async (product) => {
-    const exists = cart.find((item) => item.id === product.id);
-    let updatedCart;
-
-    if (exists) {
-      updatedCart = cart.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-    } else {
-      updatedCart = [...cart, { id: product.id, quantity: 1 }];
-    }
-
+    const updatedCart = [...cart, { id: product.id, quantity: 1 }];
     await syncToServer(updatedCart);
   };
 
@@ -44,9 +34,9 @@ export const CartProvider = ({ children }) => {
     await syncToServer(updatedCart);
   };
 
-  const updateQuantity = async (productId, amount) => {
+  const updateQuantity = async (productId, quant) => {
     const updatedCart = cart.map((item) =>
-      item.id === productId ? { ...item, quantity: Math.max(1, item.quantity + amount) } : item
+      item.id === productId ? { ...item, quantity: Math.max(1, item.quantity + quant) } : item
     );
     await syncToServer(updatedCart);
   };

@@ -56,7 +56,7 @@ function Cart() {
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* Left: Cart Items */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 cursor-pointer lg:grid-cols-3 gap-6 flex-1">
           {cartProducts.map((product) => (
             <div
               key={product.id}

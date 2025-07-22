@@ -32,14 +32,6 @@ function Payment() {
     if (user?.id) fetchUserAddress();
   }, [user]);
 
-  if (!product) {
-    return (
-      <div className="text-center py-20 text-xl">
-        No product selected for payment
-      </div>
-    );
-  }
-
   const handlePayment = async () => {
     const finalAddress = useOld && oldAddress ? oldAddress : address;
 

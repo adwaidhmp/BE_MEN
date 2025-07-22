@@ -1106,8 +1106,7 @@
       "password": "bemen@gmail.com",
       "role": "admin",
       "blocked": false,
-      "active": true,
-      "order": []
+      "active": true
     },
     {
       "id": "1b70",
@@ -1597,59 +1596,17 @@
         {
           "id": "63",
           "quantity": 2
-        }
-      ],
-      "order": [
-        {
-          "id": "33",
-          "quantity": 3,
-          "orderId": "1753169394398-0",
-          "date": "7/22/2025, 12:59:54 PM",
-          "price": "330.00",
-          "category": "cap",
-          "status": "shipped",
-          "address": "Abcd"
-        },
-        {
-          "id": "32",
-          "quantity": 6,
-          "orderId": "1753169394398-1",
-          "date": "7/22/2025, 12:59:54 PM",
-          "price": "600.00",
-          "category": "cap",
-          "status": "shipped",
-          "address": "Abcd"
         },
         {
           "id": "3",
-          "quantity": 1,
-          "orderId": "1753169394398-2",
-          "date": "7/22/2025, 12:59:54 PM",
-          "price": "90.00",
-          "category": "sunglass",
-          "status": "pending",
-          "address": "Abcd"
+          "quantity": 3
         },
         {
-          "id": "4",
-          "quantity": 1,
-          "orderId": "1753169394398-3",
-          "date": "7/22/2025, 12:59:54 PM",
-          "price": "90.00",
-          "category": "sunglass",
-          "status": "pending",
-          "address": "Abcd"
-        },
-        {
-          "id": "5",
-          "quantity": 1,
-          "orderId": "1753169394398-4",
-          "date": "7/22/2025, 12:59:54 PM",
-          "price": "110.00",
-          "category": "sunglass",
-          "status": "pending",
-          "address": "Abcd"
-        },
+          "id": "1",
+          "quantity": 1
+        }
+      ],
+      "order": [
         {
           "id": "6",
           "quantity": 1,
@@ -1661,24 +1618,14 @@
           "address": "Abcd"
         },
         {
-          "id": "4",
-          "quantity": 1,
-          "orderId": "1753170132650-0",
-          "date": "7/22/2025, 1:12:12 PM",
-          "price": "90.00",
-          "category": "sunglass",
-          "status": "pending",
-          "address": "asdasdasdas"
-        },
-        {
-          "id": "10",
-          "quantity": 1,
-          "orderId": "1753170152463-0",
-          "date": "7/22/2025, 1:12:32 PM",
-          "price": "110.00",
-          "category": "sunglass",
-          "status": "pending",
-          "address": "ddddddddddddddddddddddddddddd"
+          "id": "53",
+          "quantity": 2,
+          "orderId": "1753205957823-0",
+          "date": "7/22/2025, 11:09:17 PM",
+          "price": "220.00",
+          "category": "wallet",
+          "status": "shipped",
+          "address": "kannur"
         }
       ],
       "blocked": false,
@@ -1686,7 +1633,7 @@
       "reviews": [
         "Nice Products"
       ],
-      "address": "ddddddddddddddddddddddddddddd"
+      "address": "kannur"
     }
   ]
 }

@@ -42,8 +42,6 @@ export const OrderProvider = ({ children }) => {
   await syncToServer(updated);
 };
 
-
-
   const cancelOrder = async (orderId) => {
     const updated = orders.filter((order) => order.orderId !== orderId);
     await syncToServer(updated);
