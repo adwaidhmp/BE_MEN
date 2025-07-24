@@ -72,6 +72,8 @@ function Orders() {
                     ? "text-yellow-600"
                     : order.status === "delivered"
                     ? "text-green-600"
+                    : order.status === "cancelled"
+                    ? "text-red-500"
                     : "text-blue-500"
                 }`}
               >
@@ -79,11 +81,11 @@ function Orders() {
               </p>
             </div>
 
-            {order.status !== "delivered" && (
+            {order.status !== "delivered" && order.status !== "cancelled" && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  toast.error("Order Cancelled")
+                  toast.error("Order Cancelled");
                   cancelOrder(order.orderId);
                 }}
                 className="bg-red-500 text-white text-sm px-2 py-1 rounded hover:bg-red-600"
@@ -91,6 +93,7 @@ function Orders() {
                 Cancel Order
               </button>
             )}
+
           </div>
         ))}
       </div>

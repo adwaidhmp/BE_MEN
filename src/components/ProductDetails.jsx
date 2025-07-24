@@ -66,7 +66,7 @@ function ProductDetails() {
         </button>
 
         {/* Product Image Carousel */}
-        <div className="relative mb-4">
+        <div className="relative mt-4 mb-4">
           <img
             src={product.image[imageIndex]}
             alt={`${product.name}-${imageIndex}`}

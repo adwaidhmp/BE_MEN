@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "./contexts/cartcontext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,8 +6,7 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 import { toast } from "react-toastify";
 
 function Cart() {
-  const { cart, removeFromCart, updateQuantity, removeMultipleFromCart } =
-    useContext(CartContext);
+  const { cart, removeFromCart, updateQuantity,} = useContext(CartContext);
   const [allProducts, setAllProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -30,17 +29,22 @@ function Cart() {
     })
     .filter(Boolean);
 
-  const totalPrice = cartProducts.reduce(
+  const totalPrice = useMemo(() => {
+  return cartProducts.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
+}, [cartProducts]);
 
-  const handleBuyAll = () => {
-    const productsToBuy = [...cartProducts];
-    const ids = productsToBuy.map((p) => p.id);
-    navigate("/payment", { state: { product: productsToBuy } });
-    removeMultipleFromCart(ids);
-  };
+const handleBuyAll = () => {
+  const productsToBuy = [...cartProducts];
+
+  navigate("/payment", {
+    state: {
+      product: productsToBuy,
+    },
+  });
+};
 
   if (cartProducts.length === 0) {
     return (
@@ -109,7 +113,6 @@ function Cart() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    removeFromCart(product.id);
                     navigate("/payment", { state: { product } });
                   }}
                   className="bg-black text-white py-1 px-3 rounded hover:text-green-400 text-sm sm:text-base"

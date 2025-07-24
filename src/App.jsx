@@ -62,7 +62,7 @@ const location = useLocation();
         <Route path='/about' element={<Aboutus/>}/>
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute> } />
         <Route path='/cart' element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
-        <Route path="/payment" element={<LoginRoute><Payment /></LoginRoute>} />
+        <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute> } />
         <Route path='/orders' element={<ProtectedRoute><Orders/></ProtectedRoute>}/>
         <Route path="/signup" element={<LoginRoute> <Signup /></LoginRoute> } />
         <Route path="/login" element={<LoginRoute><Login /></LoginRoute>} />

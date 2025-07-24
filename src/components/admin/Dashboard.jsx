@@ -29,8 +29,8 @@ export default function Dashboard() {
       try {
         const userRes = await axios.get("http://localhost:3001/users");
         const allUsers = userRes.data;
-        const nonAdminUsers = allUsers.filter((u) => u.role !== "admin");
-        setUsers(nonAdminUsers);
+        const totuser = allUsers.filter((u) => u.role !== "admin");
+        setUsers(totuser);
 
         const allOrders = allUsers.flatMap((user) =>
           (user.order || []).map((o) => ({
@@ -54,11 +54,11 @@ export default function Dashboard() {
   const todayOrders = orders.filter(
     (order) => new Date(order.date).toLocaleDateString() === today
   );
-
-  const totalRevenue = orders.reduce((sum, order) => sum + (parseFloat(order.price) || 0), 0);
   const todayRevenue = todayOrders.reduce((sum, order) => sum + (parseFloat(order.price) || 0), 0);
 
-  // ✅ Monthly Revenue Chart Data
+  const totalRevenue = orders.reduce((sum, order) => sum + (parseFloat(order.price) || 0), 0);
+
+  //  Monthly Income Chart Data
   const incomeByMonth = {};
   orders.forEach((order) => {
     const dateObj = new Date(order.date);
@@ -71,19 +71,7 @@ export default function Dashboard() {
     income,
   }));
 
-  // ✅ Daily Revenue Bar Chart Data
-  const incomeByDay = {};
-  orders.forEach((order) => {
-    const key = new Date(order.date).toLocaleDateString();
-    incomeByDay[key] = (incomeByDay[key] || 0) + (parseFloat(order.price) || 0);
-  });
-
-  const dailyChartData = Object.entries(incomeByDay).map(([day, income]) => ({
-    day,
-    income,
-  }));
-
-  // ✅ Donut chart - Product Category Count
+  //  Donut chart - Product saled by Category Count
   const categoryCount = {};
   orders.forEach((order) => {
     if (order.category) {
@@ -96,6 +84,18 @@ export default function Dashboard() {
     value,
   }));
 
+    //  Daily Income Bar Chart Data
+  const incomeByDay = {};
+  orders.forEach((order) => {
+    const key = new Date(order.date).toLocaleDateString();
+    incomeByDay[key] = (incomeByDay[key] || 0) + (parseFloat(order.price) || 0);
+  });
+
+  const dailyChartData = Object.entries(incomeByDay).map(([day, income]) => ({
+    day,
+    income,
+  }));
+  
   return (
     <div className="container">
       <main className="flex-1 p-6">
@@ -117,7 +117,7 @@ export default function Dashboard() {
               {orders.filter((o) => o.status !== "delivered").length}
             </p>
           </div>
-          <div className="bg-white shadow p-6 rounded-lg">
+          <div className="bg-white shadow p-6 rounded-lg text-green-600">
             <h3 className="text-xl font-semibold">Orders Delivered</h3>
             <p className="text-3xl font-bold mt-2">
               {orders.filter((o) => o.status === "delivered").length}

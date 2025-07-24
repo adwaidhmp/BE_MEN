@@ -5,7 +5,7 @@ function AdmOrders() {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
   const [expandedUsers, setExpandedUsers] = useState({});
-  const [filters, setFilters] = useState({}); // Stores current filter per user
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,17 +57,17 @@ function AdmOrders() {
     }));
   };
 
-  const otherUsers = users.filter((u) => u.role !== "admin");
+  const allusers = users.filter((u) => u.role !== "admin");
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold text-center mb-8">All User Orders</h1>
 
-      {otherUsers.length === 0 && (
-        <p className="text-center text-gray-500">No non-admin users found.</p>
+      {allusers.length === 0 && (
+        <p className="text-center text-gray-500">No users found.</p>
       )}
 
-      {otherUsers.map((user) => (
+      {allusers.map((user) => (
         <div key={user.id} className="mb-6 bg-white shadow rounded-lg p-6">
           <div className="flex justify-between items-center mb-2 flex-wrap gap-2">
             <h2 className="text-xl font-semibold text-blue-700">
@@ -109,6 +109,12 @@ function AdmOrders() {
                   >
                     Delivered
                   </button>
+                  <button
+                    onClick={() => changeFilter(user.id, "cancelled")}
+                    className="text-sm px-3 py-1 rounded bg-red-500 hover:bg-red-600 text-white transition"
+                  >
+                    Cancelled
+                  </button>
                 </>
               )}
             </div>
@@ -133,7 +139,7 @@ function AdmOrders() {
                           key={order.orderId}
                           className="bg-gray-50 p-4 rounded shadow-sm border hover:shadow-md transition"
                         >
-                          <div className="flex items-center gap-6">
+                          <div className="flex items-center gap-6 flex-wrap">
                             <img
                               src={product.image[0]}
                               alt={product.name}
@@ -149,12 +155,10 @@ function AdmOrders() {
                                 {order.quantity}
                               </p>
                               <p>
-                                <span className="font-semibold">Total:</span> $
-                                {order.price}
+                                <span className="font-semibold">Total:</span> $ {order.price}
                               </p>
                               <p>
-                                <span className="font-semibold">Date:</span>{" "}
-                                {order.date}
+                                <span className="font-semibold">Date:</span> {order.date}
                               </p>
                               <p>
                                 <span className="font-semibold">Status:</span>{" "}
@@ -164,15 +168,17 @@ function AdmOrders() {
                                       ? "text-green-600"
                                       : order.status === "shipped"
                                       ? "text-yellow-600"
-                                      : "text-orange-500"
+                                      : order.status === "pending"
+                                      ? "text-orange-500"
+                                      : "text-red-600"
                                   }`}
                                 >
                                   {order.status || "pending"}
                                 </span>
                               </p>
                             </div>
-                            
-                            <p className="mt-1 text-gray-700 text-sm">
+
+                            <p className="text-sm text-gray-700">
                               <span className="font-semibold">Address:</span> {order.address}
                             </p>
                           </div>
@@ -206,6 +212,7 @@ function AdmOrders() {
                                 Mark as Delivered
                               </button>
                             )}
+                            {/* No cancel button shown here */}
                           </div>
                         </div>
                       );

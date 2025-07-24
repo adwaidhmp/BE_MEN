@@ -5,6 +5,8 @@ import { useAuth } from "./contexts/Authcontext";
 import { WishlistContext } from "./contexts/wishlistcontext";
 import { CartContext } from "./contexts/cartcontext";
 import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 function Profile({ onClose, profileRef }) {
   const navigate = useNavigate();
@@ -13,7 +15,6 @@ function Profile({ onClose, profileRef }) {
   const { clearCart } = useContext(CartContext);
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editForm, setEditForm] = useState({ name: "", email: "", password: "" });
 
   useEffect(() => {
     const storedUser = JSON.parse(sessionStorage.getItem("user"));
@@ -33,7 +34,7 @@ function Profile({ onClose, profileRef }) {
     };
 
     fetchUser();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleLogout = async () => {
@@ -52,23 +53,30 @@ function Profile({ onClose, profileRef }) {
     }
   };
 
-  const handleEditSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const updated = {
-        name: editForm.name || user.name,
-        email: editForm.email || user.email,
-        password: editForm.password || user.password,
-      };
-      await axios.patch(`http://localhost:3001/users/${user.id}`, updated);
-      toast.success("Profile updated!");
-      setUser({ ...user, ...updated });
-      setIsEditing(false);
-    } catch (err) {
-      console.error("Update failed:", err);
-      toast.error("Failed to update profile");
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: user?.name || "",
+      email: user?.email || "",
+      password: "",
+    },
+    enableReinitialize: true, // Important: Reset form when user data changes
+    validationSchema: Yup.object({
+      name: Yup.string().min(2, "Name must be at least 2 characters"),
+      email: Yup.string().email("Invalid email").required("Email is required"),
+      password: Yup.string().min(6, "Password must be at least 6 characters"),
+    }),
+    onSubmit: async (values) => {
+      try {
+        await axios.patch(`http://localhost:3001/users/${user.id}`, values);
+        toast.success("Profile updated!");
+        setUser({ ...user, ...values });
+        setIsEditing(false);
+      } catch (err) {
+        console.error("Update failed:", err);
+        toast.error("Failed to update profile");
+      }
+    },
+  });
 
   return (
     <div
@@ -81,10 +89,6 @@ function Profile({ onClose, profileRef }) {
       >
         ×
       </button>
-
-      {/* <h2 className="text-3xl font-bold mb-6 mt-8 text-center tracking-wide drop-shadow">
-        Profile
-      </h2> */}
 
       {user ? (
         <>
@@ -106,29 +110,44 @@ function Profile({ onClose, profileRef }) {
           </div>
 
           {isEditing ? (
-            <form onSubmit={handleEditSubmit} className="space-y-3 mb-6">
+            <form onSubmit={formik.handleSubmit} className="space-y-3 mb-6">
               <input
                 name="name"
                 placeholder="New Name"
-                value={editForm.name}
-                onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 className="w-full px-3 py-2 bg-white/40 border border-cyan-400 rounded text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
               />
+              {formik.touched.name && formik.errors.name && (
+                <p className="text-red-600 text-sm">{formik.errors.name}</p>
+              )}
+
               <input
                 name="email"
                 placeholder="New Email"
-                value={editForm.email}
-                onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 className="w-full px-3 py-2 bg-white/40 border border-cyan-400 rounded text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
               />
+              {formik.touched.email && formik.errors.email && (
+                <p className="text-red-600 text-sm">{formik.errors.email}</p>
+              )}
+
               <input
                 name="password"
                 type="password"
                 placeholder="New Password"
-                value={editForm.password}
-                onChange={(e) => setEditForm({ ...editForm, password: e.target.value })}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 className="w-full px-3 py-2 bg-white/40 border border-cyan-400 rounded text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
               />
+              {formik.touched.password && formik.errors.password && (
+                <p className="text-red-600 text-sm">{formik.errors.password}</p>
+              )}
+
               <button
                 type="submit"
                 className="w-full bg-cyan-500/30 border border-cyan-400 text-black py-2 px-4 rounded hover:bg-cyan-600/40 hover:shadow-[0_0_10px_rgba(0,255,255,0.5)] transition"
@@ -137,14 +156,7 @@ function Profile({ onClose, profileRef }) {
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  setIsEditing(false);
-                  setEditForm({
-                    name: user.name || "",
-                    email: user.email || "",
-                    password: user.password || "",
-                  });
-                }}
+                onClick={() => setIsEditing(false)}
                 className="w-full bg-gray-500/30 border border-gray-400 text-black py-2 px-4 rounded hover:bg-gray-600/40 hover:shadow transition"
               >
                 Cancel
@@ -154,10 +166,7 @@ function Profile({ onClose, profileRef }) {
             <>
               <div className="flex flex-col space-y-2 mb-6">
                 <button
-                  onClick={() => {
-                    setIsEditing(true);
-                    setEditForm({ name: "", email: "", password: "" });
-                  }}
+                  onClick={() => setIsEditing(true)}
                   className="bg-white/20 border border-purple-400 text-black py-2 px-4 rounded hover:bg-white/30 hover:shadow transition"
                 >
                   Edit Profile

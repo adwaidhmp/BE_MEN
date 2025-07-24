@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { WishlistContext } from "./contexts/wishlistcontext";
 import { CartContext } from "./contexts/cartcontext";
@@ -90,7 +90,9 @@ function Homepage() {
       setFilteredProducts(result);
     }
   }, [searchdata, alldata]);
-
+      const visibleProducts = useMemo(() => {
+    return filteredProducts.slice(0, visibleCount);
+  }, [filteredProducts, visibleCount]);
   return (
     <>
       <div className="bg-gray-100 min-h-screen sm:px-6 pt-38 text-gray-800">
@@ -175,7 +177,7 @@ function Homepage() {
           <>
             {/* Product Grid */}
             <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-4 py-2">
-              {filteredProducts.slice(0, visibleCount).map((product) => {
+              {visibleProducts.map((product) => {
                 const isInWishlist = wishlist.includes(String(product.id));
                 const isInCart = cart.some((item) => item.id === product.id); 
                 return (

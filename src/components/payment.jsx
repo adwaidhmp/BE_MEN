@@ -1,16 +1,17 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { OrderContext } from "./contexts/ordercontext";
 import { useAuth } from "./contexts/Authcontext";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { CartContext } from "./contexts/cartcontext";
 
 function Payment() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { placeOrder } = useContext(OrderContext);
   const { user } = useAuth();
-
+  const {removeFromCart,removeMultipleFromCart}=useContext(CartContext)
   const [address, setAddress] = useState("");
   const [useOld, setUseOld] = useState(false);
   const [oldAddress, setOldAddress] = useState("");
@@ -60,6 +61,13 @@ function Payment() {
         });
       }
 
+      if (Array.isArray(product)) {
+      const ids = product.map((p) => p.id);
+      removeMultipleFromCart(ids);
+    } else {
+      removeFromCart(product.id);
+    }
+
       navigate("/orders", { replace: true });
       toast.success("Order Placed");
     } catch (error) {
@@ -67,6 +75,14 @@ function Payment() {
       toast.error("Something went wrong");
     }
   };
+
+    if (!product || (Array.isArray(product) && product.length === 0)) {
+    return (
+      <div className="mt-24 text-center text-gray-600 text-lg">
+         <Link to="/home">No items for Payment click here to go Home</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 mt-24 max-w-xl mx-auto bg-white shadow rounded">
