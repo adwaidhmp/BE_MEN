@@ -56,6 +56,7 @@ function ProductDetails() {
           className="text-2xl cursor-pointer absolute top-4 right-4"
           onClick={() => {
             if (!user) {
+              toast.error("Please login to add to add to wishlist")
               navigate("/login");
               return;
             }
@@ -120,7 +121,12 @@ function ProductDetails() {
           ) : (
             <button
               onClick={(e) => {
-                toast.success("Added to cart");
+                if(user){
+                  toast.success("Added to cart");
+                }
+                else{
+                  toast.error("Please login to add to cart");
+                }
                 e.stopPropagation();
                 if (!user) {
                   navigate("/login");

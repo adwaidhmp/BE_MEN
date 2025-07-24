@@ -3,8 +3,12 @@ import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 function Signup() {
+
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
   //validation
   const validationSchema = Yup.object({
@@ -83,16 +87,24 @@ function Signup() {
           {formik.touched.email && formik.errors.email && (
             <div className="text-red-600 text-sm">{formik.errors.email}</div>
           )}
-
+          <div className="relative">
           <input
             name="password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             placeholder="Password"
             className="w-full border px-3 py-2 rounded"
           />
+            <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute inset-y-0 right-2 flex items-center text-gray-700 hover:text-black"
+          >
+            {showPassword ? "🔒" : "👀"}
+          </button>
+          </div>
           {formik.touched.password && formik.errors.password && (
             <div className="text-red-600 text-sm">
               {formik.errors.password}

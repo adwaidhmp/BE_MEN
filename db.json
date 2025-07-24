@@ -1012,7 +1012,7 @@
       "id": "73",
       "name": "Gucci Lion Head Chain",
       "category": "chains",
-      "price": 100,
+      "price": 110,
       "image": [
         "/images/chains/guci.png"
       ],
@@ -1555,7 +1555,7 @@
           "address": "asdsadasd"
         }
       ],
-      "blocked": false,
+      "blocked": true,
       "active": false
     },
     {
@@ -1836,6 +1836,228 @@
       "blocked": false,
       "active": false,
       "address": "Abcd"
+    },
+    {
+      "id": "65d6",
+      "name": "Adwaith mp",
+      "email": "Adwaith@gmail.com",
+      "password": "Adwaith@gmail.com",
+      "role": "user",
+      "wishlist": [
+        "25",
+        "35",
+        "50"
+      ],
+      "cart": [],
+      "order": [
+        {
+          "id": "51",
+          "quantity": 1,
+          "orderId": "1753344756197-0",
+          "date": "7/24/2025, 1:42:36 PM",
+          "price": "110.00",
+          "category": "wallet",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "2",
+          "quantity": 4,
+          "orderId": "1753344766125-0",
+          "date": "7/24/2025, 1:42:46 PM",
+          "price": "400.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "4",
+          "quantity": 4,
+          "orderId": "1753344766125-1",
+          "date": "7/24/2025, 1:42:46 PM",
+          "price": "360.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "62",
+          "quantity": 4,
+          "orderId": "1753344766125-2",
+          "date": "7/24/2025, 1:42:46 PM",
+          "price": "440.00",
+          "category": "spray",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "68",
+          "quantity": 1,
+          "orderId": "1753344766125-3",
+          "date": "7/24/2025, 1:42:46 PM",
+          "price": "100.00",
+          "category": "rings",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "73",
+          "quantity": 1,
+          "orderId": "1753344766125-4",
+          "date": "7/24/2025, 1:42:46 PM",
+          "price": "100.00",
+          "category": "chains",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "36",
+          "quantity": 1,
+          "orderId": "1753344766125-5",
+          "date": "7/24/2025, 1:42:46 PM",
+          "price": "100.00",
+          "category": "watch",
+          "status": "pending",
+          "address": "Abcd"
+        }
+      ],
+      "blocked": false,
+      "active": false,
+      "address": "Abcd"
+    },
+    {
+      "id": "0bb5",
+      "name": "user1",
+      "email": "user1@gmail.com",
+      "password": "user@gmail.com",
+      "role": "user",
+      "wishlist": [
+        "26",
+        "27",
+        "51",
+        "52",
+        "67",
+        "68"
+      ],
+      "cart": [],
+      "order": [
+        {
+          "id": "3",
+          "quantity": 1,
+          "orderId": "1753346270526-0",
+          "date": "7/24/2025, 2:07:50 PM",
+          "price": "87.00",
+          "category": "sunglass",
+          "status": "delivered",
+          "address": "Abcd"
+        },
+        {
+          "id": "62",
+          "quantity": 7,
+          "orderId": "1753346292391-0",
+          "date": "7/24/2025, 2:08:12 PM",
+          "price": "770.00",
+          "category": "spray",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "26",
+          "quantity": 1,
+          "orderId": "1753346303822-0",
+          "date": "7/24/2025, 2:08:23 PM",
+          "price": "100.00",
+          "category": "cap",
+          "status": "shipped",
+          "address": "Abcd"
+        },
+        {
+          "id": "4",
+          "quantity": 1,
+          "orderId": "1753346316720-0",
+          "date": "7/24/2025, 2:08:36 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "61",
+          "quantity": 6,
+          "orderId": "1753346316720-1",
+          "date": "7/24/2025, 2:08:36 PM",
+          "price": "660.00",
+          "category": "spray",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "50",
+          "quantity": 1,
+          "orderId": "1753346316720-2",
+          "date": "7/24/2025, 2:08:36 PM",
+          "price": "100.00",
+          "category": "wallet",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "57",
+          "quantity": 1,
+          "orderId": "1753346316720-3",
+          "date": "7/24/2025, 2:08:36 PM",
+          "price": "100.00",
+          "category": "wallet",
+          "status": "shipped",
+          "address": "Abcd"
+        },
+        {
+          "id": "14",
+          "quantity": 1,
+          "orderId": "1753346316720-4",
+          "date": "7/24/2025, 2:08:36 PM",
+          "price": "100.00",
+          "category": "belt",
+          "status": "shipped",
+          "address": "Abcd"
+        },
+        {
+          "id": "15",
+          "quantity": 1,
+          "orderId": "1753346316720-5",
+          "date": "7/24/2025, 2:08:36 PM",
+          "price": "110.00",
+          "category": "belt",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "27",
+          "quantity": 1,
+          "orderId": "1753346316720-6",
+          "date": "7/24/2025, 2:08:36 PM",
+          "price": "110.00",
+          "category": "cap",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "26",
+          "quantity": 1,
+          "orderId": "1753346316720-7",
+          "date": "7/24/2025, 2:08:36 PM",
+          "price": "100.00",
+          "category": "cap",
+          "status": "pending",
+          "address": "Abcd"
+        }
+      ],
+      "blocked": false,
+      "active": false,
+      "address": "Abcd",
+      "reviews": [
+        "Nice products"
+      ]
     }
   ]
 }

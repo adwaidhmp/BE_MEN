@@ -13,6 +13,8 @@ function Profile({ onClose, profileRef }) {
   const { user, setUser } = useAuth();
   const { clearWishlist } = useContext(WishlistContext);
   const { clearCart } = useContext(CartContext);
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -57,7 +59,7 @@ function Profile({ onClose, profileRef }) {
     initialValues: {
       name: user?.name || "",
       email: user?.email || "",
-      password: "",
+      password: user?.password||"",
     },
     enableReinitialize: true, // Important: Reset form when user data changes
     validationSchema: Yup.object({
@@ -134,16 +136,24 @@ function Profile({ onClose, profileRef }) {
               {formik.touched.email && formik.errors.email && (
                 <p className="text-red-600 text-sm">{formik.errors.email}</p>
               )}
-
+              <div className="relative">
               <input
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="New Password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className="w-full px-3 py-2 bg-white/40 border border-cyan-400 rounded text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-2 flex items-center text-gray-700 hover:text-black"
+              >
+                {showPassword ? "🔒" : "👀"}
+              </button> 
+              </div>
               {formik.touched.password && formik.errors.password && (
                 <p className="text-red-600 text-sm">{formik.errors.password}</p>
               )}

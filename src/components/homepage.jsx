@@ -202,6 +202,7 @@ function Homepage() {
                           onClick={(e) => {
                             e.stopPropagation();
                             if (!user) {
+                              toast.error("Please login to add to wishlist")
                               navigate("/login");
                               return;
                             }
@@ -225,7 +226,12 @@ function Homepage() {
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              toast.success("Added to Cart")
+                              if(user){
+                                toast.success("Added to Cart")
+                              }
+                              else{
+                                toast.error("Please login to add to cart")
+                              }
                               if (!user) {
                                 navigate("/login");
                                 return;
