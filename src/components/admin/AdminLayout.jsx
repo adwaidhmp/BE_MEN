@@ -9,8 +9,8 @@ export default function AdminLayout() {
 
   const handleLogout = () => {
     setUser(null);
-    navigate("/login");
     toast.success("Logged out successfully");
+    navigate("/home");
   };
 
   return (

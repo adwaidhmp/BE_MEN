@@ -304,7 +304,7 @@
       "id": "24",
       "name": "Versace Palazzo Belt",
       "category": "belt",
-      "price": 110,
+      "price": 111,
       "description": "Luxurious Versace belt from the Palazzo collection. Features ornate buckle design and premium leather construction.",
       "image": [
         "/images/belt/vers/vrc (3).png"
@@ -316,7 +316,7 @@
       "id": "25",
       "name": "Balenciaga Logo Cap",
       "category": "cap",
-      "price": 80,
+      "price": 100,
       "description": "Contemporary Balenciaga cap with bold logo embroidery. Street-style inspired design with premium cotton construction.",
       "image": [
         "/images/caps/bal/bal (1).png"
@@ -568,7 +568,7 @@
       "id": "36",
       "name": "Audemars Piguet Code 11.59",
       "category": "watch",
-      "price": 100,
+      "price": 101,
       "description": "Contemporary Audemars Piguet watch from the Code 11.59 collection. Modern architecture meets traditional watchmaking excellence.",
       "image": [
         "/images/watch/aud/au2.jpg"
@@ -856,7 +856,7 @@
       "id": "60",
       "name": "Armani Code Eau de Toilette",
       "category": "spray",
-      "price": 90,
+      "price": 120,
       "image": [
         "/images/spray/armani.jpg"
       ],
@@ -1093,6 +1093,30 @@
       "rating": 4.2,
       "brand": "Rayban",
       "description": "Timeless aviator sunglasses with gold-plated frames and premium UV protection. The iconic teardrop design offers both style and superior eye protection."
+    },
+    {
+      "id": "81",
+      "name": "Aviator Black Mirror",
+      "category": "sunglass",
+      "price": 111,
+      "image": [
+        "/images/sunglass/rayban3/rb (1).png"
+      ],
+      "rating": 4,
+      "brand": "Rayban",
+      "description": ""
+    },
+    {
+      "id": "82",
+      "name": "Aviator Black Mirror",
+      "category": "sunglass",
+      "price": 100,
+      "image": [
+        "/images/sunglass/rayban/rb (1).png"
+      ],
+      "rating": 4,
+      "brand": "Rayban",
+      "description": ""
     }
   ],
   "users": [
@@ -1833,7 +1857,7 @@
           "address": "Abcd"
         }
       ],
-      "blocked": false,
+      "blocked": true,
       "active": false,
       "address": "Abcd"
     },
@@ -1921,131 +1945,121 @@
           "address": "Abcd"
         }
       ],
-      "blocked": false,
+      "blocked": true,
       "active": false,
       "address": "Abcd"
     },
     {
-      "id": "0bb5",
-      "name": "user1",
-      "email": "user1@gmail.com",
-      "password": "user@gmail.com",
+      "id": "a925",
+      "name": "user3",
+      "email": "user3@gmail.com",
+      "password": "user3@gmail.com",
       "role": "user",
       "wishlist": [
         "26",
         "27",
-        "51",
-        "52",
-        "67",
-        "68"
+        "14",
+        "15",
+        "36",
+        "37"
       ],
       "cart": [],
       "order": [
         {
-          "id": "3",
-          "quantity": 1,
-          "orderId": "1753346270526-0",
-          "date": "7/24/2025, 2:07:50 PM",
-          "price": "87.00",
-          "category": "sunglass",
-          "status": "delivered",
-          "address": "Abcd"
-        },
-        {
-          "id": "62",
-          "quantity": 7,
-          "orderId": "1753346292391-0",
-          "date": "7/24/2025, 2:08:12 PM",
-          "price": "770.00",
+          "id": "61",
+          "quantity": 4,
+          "orderId": "1753356823269-0",
+          "date": "7/24/2025, 5:03:43 PM",
+          "price": "440.00",
           "category": "spray",
-          "status": "pending",
-          "address": "Abcd"
-        },
-        {
-          "id": "26",
-          "quantity": 1,
-          "orderId": "1753346303822-0",
-          "date": "7/24/2025, 2:08:23 PM",
-          "price": "100.00",
-          "category": "cap",
-          "status": "shipped",
+          "status": "delivered",
           "address": "Abcd"
         },
         {
           "id": "4",
           "quantity": 1,
-          "orderId": "1753346316720-0",
-          "date": "7/24/2025, 2:08:36 PM",
+          "orderId": "1753356831669-0",
+          "date": "7/24/2025, 5:03:51 PM",
           "price": "90.00",
           "category": "sunglass",
+          "status": "delivered",
+          "address": "Abcd"
+        },
+        {
+          "id": "73",
+          "quantity": 4,
+          "orderId": "1753356841163-0",
+          "date": "7/24/2025, 5:04:01 PM",
+          "price": "440.00",
+          "category": "chains",
+          "status": "shipped",
+          "address": "Abcd"
+        },
+        {
+          "id": "67",
+          "quantity": 3,
+          "orderId": "1753356841163-1",
+          "date": "7/24/2025, 5:04:01 PM",
+          "price": "330.00",
+          "category": "rings",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "60",
+          "quantity": 1,
+          "orderId": "1753356841163-2",
+          "date": "7/24/2025, 5:04:01 PM",
+          "price": "90.00",
+          "category": "spray",
           "status": "cancelled",
           "address": "Abcd"
         },
         {
-          "id": "61",
-          "quantity": 6,
-          "orderId": "1753346316720-1",
-          "date": "7/24/2025, 2:08:36 PM",
-          "price": "660.00",
-          "category": "spray",
+          "id": "51",
+          "quantity": 1,
+          "orderId": "1753356841163-3",
+          "date": "7/24/2025, 5:04:01 PM",
+          "price": "110.00",
+          "category": "wallet",
           "status": "cancelled",
           "address": "Abcd"
         },
         {
           "id": "50",
           "quantity": 1,
-          "orderId": "1753346316720-2",
-          "date": "7/24/2025, 2:08:36 PM",
+          "orderId": "1753356841163-4",
+          "date": "7/24/2025, 5:04:01 PM",
           "price": "100.00",
           "category": "wallet",
           "status": "cancelled",
           "address": "Abcd"
         },
         {
-          "id": "57",
+          "id": "2",
           "quantity": 1,
-          "orderId": "1753346316720-3",
-          "date": "7/24/2025, 2:08:36 PM",
+          "orderId": "1753356841163-5",
+          "date": "7/24/2025, 5:04:01 PM",
           "price": "100.00",
-          "category": "wallet",
-          "status": "shipped",
-          "address": "Abcd"
-        },
-        {
-          "id": "14",
-          "quantity": 1,
-          "orderId": "1753346316720-4",
-          "date": "7/24/2025, 2:08:36 PM",
-          "price": "100.00",
-          "category": "belt",
-          "status": "shipped",
-          "address": "Abcd"
-        },
-        {
-          "id": "15",
-          "quantity": 1,
-          "orderId": "1753346316720-5",
-          "date": "7/24/2025, 2:08:36 PM",
-          "price": "110.00",
-          "category": "belt",
+          "category": "sunglass",
           "status": "pending",
           "address": "Abcd"
         },
         {
-          "id": "27",
+          "id": "3",
           "quantity": 1,
-          "orderId": "1753346316720-6",
-          "date": "7/24/2025, 2:08:36 PM",
-          "price": "110.00",
-          "category": "cap",
+          "orderId": "1753356841163-6",
+          "date": "7/24/2025, 5:04:01 PM",
+          "price": "87.00",
+          "category": "sunglass",
           "status": "pending",
           "address": "Abcd"
         },
         {
           "id": "26",
           "quantity": 1,
-          "orderId": "1753346316720-7",
-          "date": "7/24/2025, 2:08:36 PM",
+          "orderId": "1753356841163-7",
+          "date": "7/24/2025, 5:04:01 PM",
           "price": "100.00",
           "category": "cap",
           "status": "pending",
@@ -2056,7 +2070,307 @@
       "active": false,
       "address": "Abcd",
       "reviews": [
+        "haii"
+      ]
+    },
+    {
+      "id": "38db",
+      "name": "user6",
+      "email": "user6@gmail.com",
+      "password": "user6@gmail.com",
+      "role": "user",
+      "wishlist": [
+        "4",
+        "51",
+        "52",
+        "14",
+        "15",
+        "25"
+      ],
+      "cart": [],
+      "order": [
+        {
+          "id": "50",
+          "quantity": 1,
+          "orderId": "1753357180588-0",
+          "date": "7/24/2025, 5:09:40 PM",
+          "price": "100.00",
+          "category": "wallet",
+          "status": "delivered",
+          "address": "Abcd"
+        },
+        {
+          "id": "5",
+          "quantity": 1,
+          "orderId": "1753357187050-0",
+          "date": "7/24/2025, 5:09:47 PM",
+          "price": "110.00",
+          "category": "sunglass",
+          "status": "shipped",
+          "address": "Abcd"
+        },
+        {
+          "id": "68",
+          "quantity": 6,
+          "orderId": "1753357198522-0",
+          "date": "7/24/2025, 5:09:58 PM",
+          "price": "600.00",
+          "category": "rings",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "51",
+          "quantity": 6,
+          "orderId": "1753357198522-1",
+          "date": "7/24/2025, 5:09:58 PM",
+          "price": "660.00",
+          "category": "wallet",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "25",
+          "quantity": 6,
+          "orderId": "1753357198522-2",
+          "date": "7/24/2025, 5:09:58 PM",
+          "price": "480.00",
+          "category": "cap",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "4",
+          "quantity": 1,
+          "orderId": "1753357198522-3",
+          "date": "7/24/2025, 5:09:58 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "Abcd"
+        }
+      ],
+      "blocked": false,
+      "active": false,
+      "address": "Abcd",
+      "reviews": [
+        "nice products"
+      ]
+    },
+    {
+      "id": "58c3",
+      "name": "userr1",
+      "email": "userr1@gmail.com",
+      "password": "userr1@gmail.com",
+      "role": "user",
+      "wishlist": [
+        "25",
+        "26",
+        "35",
+        "36",
+        "60",
+        "61",
+        "72",
+        "71"
+      ],
+      "cart": [],
+      "order": [
+        {
+          "id": "50",
+          "quantity": 1,
+          "orderId": "1753357677143-0",
+          "date": "7/24/2025, 5:17:57 PM",
+          "price": "100.00",
+          "category": "wallet",
+          "status": "delivered",
+          "address": "Abcd"
+        },
+        {
+          "id": "5",
+          "quantity": 1,
+          "orderId": "1753357683121-0",
+          "date": "7/24/2025, 5:18:03 PM",
+          "price": "110.00",
+          "category": "sunglass",
+          "status": "shipped",
+          "address": "Abcd"
+        },
+        {
+          "id": "66",
+          "quantity": 5,
+          "orderId": "1753357694320-0",
+          "date": "7/24/2025, 5:18:14 PM",
+          "price": "450.00",
+          "category": "rings",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "13",
+          "quantity": 5,
+          "orderId": "1753357694320-1",
+          "date": "7/24/2025, 5:18:14 PM",
+          "price": "450.00",
+          "category": "belt",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "14",
+          "quantity": 5,
+          "orderId": "1753357694320-2",
+          "date": "7/24/2025, 5:18:14 PM",
+          "price": "500.00",
+          "category": "belt",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "4",
+          "quantity": 1,
+          "orderId": "1753357694320-3",
+          "date": "7/24/2025, 5:18:14 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "3",
+          "quantity": 1,
+          "orderId": "1753357694320-4",
+          "date": "7/24/2025, 5:18:14 PM",
+          "price": "87.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "2",
+          "quantity": 1,
+          "orderId": "1753357694320-5",
+          "date": "7/24/2025, 5:18:14 PM",
+          "price": "100.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "25",
+          "quantity": 1,
+          "orderId": "1753357694320-6",
+          "date": "7/24/2025, 5:18:14 PM",
+          "price": "80.00",
+          "category": "cap",
+          "status": "pending",
+          "address": "Abcd"
+        }
+      ],
+      "blocked": false,
+      "active": false,
+      "address": "Abcd",
+      "reviews": [
         "Nice products"
+      ]
+    },
+    {
+      "id": "e2b8",
+      "name": "user11",
+      "email": "user11@gmail.com",
+      "password": "user11@gmail.com",
+      "role": "user",
+      "wishlist": [
+        "27",
+        "62"
+      ],
+      "cart": [],
+      "order": [
+        {
+          "id": "4",
+          "quantity": 4,
+          "orderId": "1753443116800-0",
+          "date": "7/25/2025, 5:01:56 PM",
+          "price": "360.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "69",
+          "quantity": 1,
+          "orderId": "1753443125598-0",
+          "date": "7/25/2025, 5:02:05 PM",
+          "price": "100.00",
+          "category": "rings",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "5",
+          "quantity": 5,
+          "orderId": "1753443159557-0",
+          "date": "7/25/2025, 5:02:39 PM",
+          "price": "550.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "Abcd"
+        },
+        {
+          "id": "4",
+          "quantity": 5,
+          "orderId": "1753443159557-1",
+          "date": "7/25/2025, 5:02:39 PM",
+          "price": "450.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "74",
+          "quantity": 2,
+          "orderId": "1753443159557-2",
+          "date": "7/25/2025, 5:02:39 PM",
+          "price": "180.00",
+          "category": "chains",
+          "status": "delivered",
+          "address": "Abcd"
+        },
+        {
+          "id": "68",
+          "quantity": 5,
+          "orderId": "1753443159557-3",
+          "date": "7/25/2025, 5:02:39 PM",
+          "price": "500.00",
+          "category": "rings",
+          "status": "cancelled",
+          "address": "Abcd"
+        },
+        {
+          "id": "51",
+          "quantity": 5,
+          "orderId": "1753443159557-4",
+          "date": "7/25/2025, 5:02:39 PM",
+          "price": "550.00",
+          "category": "wallet",
+          "status": "shipped",
+          "address": "Abcd"
+        },
+        {
+          "id": "14",
+          "quantity": 5,
+          "orderId": "1753443159557-5",
+          "date": "7/25/2025, 5:02:39 PM",
+          "price": "500.00",
+          "category": "belt",
+          "status": "cancelled",
+          "address": "Abcd"
+        }
+      ],
+      "blocked": false,
+      "active": false,
+      "address": "Abcd",
+      "reviews": [
+        "nice products"
       ]
     }
   ]

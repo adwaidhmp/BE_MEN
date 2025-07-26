@@ -46,7 +46,7 @@ function Profile({ onClose, profileRef }) {
       setUser(null);
       clearWishlist();
       clearCart();
-      navigate("/");
+      navigate("/home");
       onClose();
       toast.success("Logged out successfully");
     } catch (err) {
