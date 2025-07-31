@@ -5,6 +5,7 @@ import { CartContext } from "./contexts/cartcontext";
 import { useAuth } from "./contexts/Authcontext";
 import Footer from "./footer";
 import { toast } from "react-toastify";
+import CategoryCarousel from "./pages/image carousel";
 
 function Homepage() {
   const [categoryimages, setcategoryimages] = useState([]);
@@ -36,18 +37,15 @@ function Homepage() {
         const data = await response.json();
         setalldata(data);
         setFilteredProducts(data);
+          const customImages = [
+            "./landimage/rbad.webp",
+            "./landimage/rolex.jpg",
+            "./landimage/bal.webp",
+            "./landimage/vers.webp",
 
-        const categories = [
-          "sunglass", "cap", "belt", "watch", "wallet", "spray", "rings", "chains"
-        ];
-        const selectedimages = [];
-        for (let category of categories) {
-          const product = data.find((item) => item.category === category);
-          if (product && product.image?.length > 0) {
-            selectedimages.push(product.image[0]);
-          }
-        }
-        setcategoryimages(selectedimages);
+      ];
+      setcategoryimages(customImages);
+
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -95,37 +93,13 @@ function Homepage() {
   }, [filteredProducts, visibleCount]);
   return (
     <>
-      <div className="bg-gray-100 min-h-screen sm:px-6 pt-38 text-gray-800">
+    <CategoryCarousel categoryimages={categoryimages} />
+      <div className="bg-gray-100 min-h-screen sm:px-6 pt-10 text-gray-800">
         <h1 className="text-3xl font-bold mb-8 text-center">
           Explore Men's Accessories
         </h1>
         {/* moving images */}
         {/* Marquee */}
-        <div className="overflow-hidden whitespace-nowrap">
-          <style>
-            {`
-              @keyframes marquee {
-                0% { transform: translateX(100%); }
-                100% { transform: translateX(-100%); }
-              }
-              .animate-marquee {
-                display: inline-block;
-                white-space: nowrap;
-                animation: marquee 20s linear infinite;
-              }
-            `}
-          </style>
-          <div className="inline-block animate-marquee space-x-6">
-            {categoryimages.map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`Category ${idx}`}
-                className="h-28 sm:h-28 inline-block rounded shadow"
-              />
-            ))}
-          </div>
-        </div>
 
         {/* Filters */}
         <div className="flex flex-col sm:flex-row justify-between items-center py-5 gap-4">

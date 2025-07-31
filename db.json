@@ -1611,7 +1611,28 @@
         "52",
         "14"
       ],
-      "cart": [],
+      "cart": [
+        {
+          "id": "6",
+          "quantity": 1
+        },
+        {
+          "id": "7",
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "quantity": 1
+        },
+        {
+          "id": "8",
+          "quantity": 1
+        }
+      ],
       "order": [
         {
           "id": "6",
@@ -1792,10 +1813,30 @@
           "category": "chains",
           "status": "pending",
           "address": "kannur"
+        },
+        {
+          "id": "5",
+          "quantity": 1,
+          "orderId": "1753961777529-0",
+          "date": "7/31/2025, 5:06:17 PM",
+          "price": "110.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "kannur"
+        },
+        {
+          "id": "10",
+          "quantity": 1,
+          "orderId": "1753961791623-0",
+          "date": "7/31/2025, 5:06:31 PM",
+          "price": "110.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "kannur"
         }
       ],
       "blocked": false,
-      "active": false,
+      "active": true,
       "reviews": [
         "Nice Products"
       ],

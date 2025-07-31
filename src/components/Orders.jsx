@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 function Orders() {
   const { orders, cancelOrder } = useContext(OrderContext);
   const [allProducts, setAllProducts] = useState([]);
+   const [selectedStatus, setSelectedStatus] = useState("all");
   const navigate = useNavigate();
 
   // Fetch all products
@@ -34,6 +35,14 @@ function Orders() {
     .filter(Boolean)
     .sort((a, b) => new Date(b.date) - new Date(a.date)); // sort latest first
 
+    const filteredOrders =
+    selectedStatus === "all"
+      ? orderProducts
+      : orderProducts.filter((order) => order.status === selectedStatus);
+
+  const statusOptions = ["all", "pending", "shipped", "delivered", "cancelled"];
+
+
   if (orderProducts.length === 0) {
     return (
       <div className="flex items-center justify-center min-h-screen text-xl text-gray-600">
@@ -46,7 +55,7 @@ function Orders() {
     <div className="px-4 pt-35 pb-5 sm:pt-15 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold mb-6 text-center">Your Orders 🧾</h1>
       <div className="flex flex-col items-center gap-6">
-        {orderProducts.map((order) => (
+        {filteredOrders.map((order) => (
           <div
             key={order.orderId}
             onClick={() => navigate(`/product/${order.id}`)}
@@ -97,6 +106,27 @@ function Orders() {
           </div>
         ))}
       </div>
+      {/* Fixed Right Sidebar for Filtering */}
+<div className="fixed left-0 top-30 h-120 w-80 bg-white shadow-2xl  rounded px-4 pt-20 ">
+  <h2 className="text-lg font-semibold mb-4">Filter by Status</h2>
+  <ul className="space-y-3">
+    {statusOptions.map((status) => (
+      <li key={status}>
+        <button
+          onClick={() => setSelectedStatus(status)}
+          className={`w-full text-left px-3 py-2 rounded-lg transition ${
+            selectedStatus === status
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 hover:bg-gray-200"
+          }`}
+        >
+          {status.charAt(0).toUpperCase() + status.slice(1)}
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
+
     </div>
   );
 }
