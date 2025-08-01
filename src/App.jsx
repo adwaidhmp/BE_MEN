@@ -4,7 +4,7 @@ import { lazy, Suspense } from "react";
 import Loader from './components/Loader';
 const Homepage = lazy(() => import('./components/homepage'));
 import Navbar from './components/navbar'
-import Aboutus from './components/Aboutus'
+import Aboutus from './components/aboutus'
 import ProductDetails from './components/ProductDetails'
 import Wishlist from './components/wishlist'
 import { WishlistProvider } from './components/contexts/wishlistcontext'

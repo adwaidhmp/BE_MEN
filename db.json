@@ -1611,28 +1611,7 @@
         "52",
         "14"
       ],
-      "cart": [
-        {
-          "id": "6",
-          "quantity": 1
-        },
-        {
-          "id": "7",
-          "quantity": 1
-        },
-        {
-          "id": "3",
-          "quantity": 1
-        },
-        {
-          "id": "2",
-          "quantity": 1
-        },
-        {
-          "id": "8",
-          "quantity": 1
-        }
-      ],
+      "cart": [],
       "order": [
         {
           "id": "6",
@@ -1833,6 +1812,56 @@
           "category": "sunglass",
           "status": "pending",
           "address": "kannur"
+        },
+        {
+          "id": "6",
+          "quantity": 1,
+          "orderId": "1753961936605-0",
+          "date": "7/31/2025, 5:08:56 PM",
+          "price": "100.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "kozhikode"
+        },
+        {
+          "id": "7",
+          "quantity": 1,
+          "orderId": "1753961936605-1",
+          "date": "7/31/2025, 5:08:56 PM",
+          "price": "90.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "kozhikode"
+        },
+        {
+          "id": "3",
+          "quantity": 1,
+          "orderId": "1753961936605-2",
+          "date": "7/31/2025, 5:08:56 PM",
+          "price": "87.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "kozhikode"
+        },
+        {
+          "id": "2",
+          "quantity": 1,
+          "orderId": "1753961936605-3",
+          "date": "7/31/2025, 5:08:56 PM",
+          "price": "100.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "kozhikode"
+        },
+        {
+          "id": "8",
+          "quantity": 1,
+          "orderId": "1753961936605-4",
+          "date": "7/31/2025, 5:08:56 PM",
+          "price": "100.00",
+          "category": "sunglass",
+          "status": "pending",
+          "address": "kozhikode"
         }
       ],
       "blocked": false,
@@ -1840,7 +1869,7 @@
       "reviews": [
         "Nice Products"
       ],
-      "address": "kannur"
+      "address": "kozhikode"
     },
     {
       "id": "bcaf",
