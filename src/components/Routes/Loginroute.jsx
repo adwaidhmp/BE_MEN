@@ -1,8 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../contexts/Authcontext";
+import { useSelector } from "react-redux";
 
 const LoginRoute = ({ children }) => {
-  const { user } = useAuth();
+  // Get user from Redux auth slice
+  const user = useSelector((state) => state.auth.user);
 
   if (user) {
     if (user.role?.toLowerCase() === "admin") {

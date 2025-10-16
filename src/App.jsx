@@ -6,17 +6,13 @@ const Homepage = lazy(() => import('./components/homepage'));
 import Navbar from './components/navbar'
 import Aboutus from './components/aboutus'
 import ProductDetails from './components/ProductDetails'
-import Wishlist from './components/wishlist'
-import { WishlistProvider } from './components/contexts/wishlistcontext'
-import { CartProvider } from './components/contexts/cartcontext'
-import Cart from './components/cart'
-import { OrderProvider } from './components/contexts/ordercontext'
-import Orders from './components/Orders'
-import Login from './components/login'
-import Profile from './components/profile'
-import Signup from './components/signup'
-import { AuthProvider } from './components/contexts/Authcontext'
-import Payment from './components/payment'
+import Wishlist from './components/pages/wishlist';
+import Cart from './components/pages/cart';
+import Orders from './components/pages/Orders_placed';
+import Login from './components/user/login'
+import Profile from './components/user/profile'
+import Signup from './components/user/signup'
+
 import LoginRoute from './components/Routes/Loginroute'
 import ProtectedRoute from './components/Routes/protectedroutes'
 import Contact from './components/contact'
@@ -31,7 +27,11 @@ const Products =lazy(()=>import ( './components/admin/Admproducts'))
 const Feedback =lazy(()=>import ( './components/admin/Feedback'));
 import NotFound from './components/Notfound'
 import Landing from './components/Landing'
-
+import ForgotPassword from './components/user/forgotpass';
+import ResetPassword from './components/user/resetpass';
+import CheckoutPage from './components/Checkout';
+import OrderSuccess from './components/pages/Orders_placed';
+import OrdersPage from './components/pages/Order';
 
 function App() {
  
@@ -40,14 +40,9 @@ const location = useLocation();
   || location.pathname === "/login"|| location.pathname === "/signup";
   return (
     <>
-    
     <ToastContainer position="top-center" autoClose={1000} hideProgressBar={true} 
      closeOnClick pauseOnHover draggable toastClassName="!bg-black  !text-white font-medium rounded-full shadow-md p-3"
      bodyClassName="text-white "/>
-    <AuthProvider>
-    <WishlistProvider>
-    <CartProvider>
-    <OrderProvider>
     {!isAdminRoute && <Navbar />}
       <Routes>
       <Route path='/admin' element={ <Suspense fallback={<Loader />}> <AdminRoute><AdminLayout /></AdminRoute> </Suspense>}>
@@ -62,19 +57,18 @@ const location = useLocation();
         <Route path='/about' element={<Aboutus/>}/>
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute> } />
         <Route path='/cart' element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
-        <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute> } />
-        <Route path='/orders' element={<ProtectedRoute><Orders/></ProtectedRoute>}/>
+        <Route path='/orders' element={<ProtectedRoute><OrdersPage/></ProtectedRoute>}/>
+        <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+        <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/signup" element={<LoginRoute> <Signup /></LoginRoute> } />
         <Route path="/login" element={<LoginRoute><Login /></LoginRoute>} />
         <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+        <Route path="/forgot-password" element={<ProtectedRoute><ForgotPassword /></ProtectedRoute>} />
+        <Route path="/reset-password/:uid/:token" element={<ProtectedRoute><ResetPassword /></ProtectedRoute>} />
         <Route path='/contact' element={<Contact/>}/>
         <Route path="*" element={<NotFound/>} />
         <Route path="/" element={<Landing/>}/>
       </Routes>
-      </OrderProvider>
-      </CartProvider>
-      </WishlistProvider>
-      </AuthProvider>
     </>
   )
 }

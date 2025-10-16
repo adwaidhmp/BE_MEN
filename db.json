@@ -1292,10 +1292,6 @@
           "quantity": 1
         },
         {
-          "id": "6",
-          "quantity": 1
-        },
-        {
           "id": "63",
           "quantity": 1
         },
@@ -1475,10 +1471,31 @@
           "price": "110.00",
           "category": "sunglass",
           "status": "pending"
+        },
+        {
+          "id": "62",
+          "quantity": 1,
+          "orderId": "1755929080300-0",
+          "date": "8/23/2025, 11:34:40 AM",
+          "price": "110.00",
+          "category": "spray",
+          "status": "pending",
+          "address": "abcd"
+        },
+        {
+          "id": "6",
+          "quantity": 1,
+          "orderId": "1755929095800-0",
+          "date": "8/23/2025, 11:34:55 AM",
+          "price": "100.00",
+          "category": "sunglass",
+          "status": "cancelled",
+          "address": "abcd"
         }
       ],
-      "blocked": true,
-      "active": false
+      "blocked": false,
+      "active": true,
+      "address": "abcd"
     },
     {
       "id": "0f3b",
@@ -2441,6 +2458,21 @@
       "address": "Abcd",
       "reviews": [
         "nice products"
+      ]
+    },
+    {
+      "id": "e119",
+      "name": "ad",
+      "email": "ad@gmail.com",
+      "password": "ad@gmail.com",
+      "role": "user",
+      "wishlist": [],
+      "cart": [],
+      "order": [],
+      "blocked": false,
+      "active": false,
+      "reviews": [
+        "haiiiiiii"
       ]
     }
   ]

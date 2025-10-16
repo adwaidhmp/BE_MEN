@@ -1,16 +1,19 @@
-
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../contexts/Authcontext";
+import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
+  const user = useSelector((state) => state.auth.user); // get user from Redux
   const location = useLocation();
 
   if (!user) {
-    // Redirect to login and preserve current location
+    // Redirect to login if not logged in and preserve current location
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-  if (user.role === "admin") return <Navigate to="/admin" />;
+
+  if (user.is_staff) {
+    // Redirect admins to /admin
+    return <Navigate to="/admin" replace />;
+  }
 
   return children;
 };

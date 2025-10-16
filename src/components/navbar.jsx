@@ -1,27 +1,14 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { useContext, useState, useEffect, useRef } from "react";
-import { WishlistContext } from "./contexts/wishlistcontext";
-import { CartContext } from "./contexts/cartcontext";
-import { useAuth } from "./contexts/Authcontext";
-import Profile from "./profile";
+import { Link, useLocation } from "react-router-dom";
+import {  useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import Profile from "./user/profile";
+import { Heart, ShoppingCart, User, ShoppingBag, Info } from "lucide-react";
 
 function Navbar() {
   const location = useLocation();
-  const { wishlist } = useContext(WishlistContext);
-  const { cart } = useContext(CartContext);
-  const { user } = useAuth();
+  const { user } = useSelector((state) => state.auth);
   const [showProfile, setShowProfile] = useState(false);
   const profileRef = useRef(null);
-  const [srch, setsearch] = useState("");
-  const navigate = useNavigate();
-
-  const handleSearch = () => {
-    if (srch.trim()) {
-      navigate(`/home?search=${encodeURIComponent(srch)}`);
-      setsearch("");
-    }
-  };
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -33,98 +20,109 @@ function Navbar() {
     if (showProfile) {
       document.addEventListener("mousedown", handleClickOutside);
     }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showProfile]);
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-gray-300 text-black px-4 py-3 flex flex-col md:flex-row items-center justify-between shadow-md">
-        {/* Brand */}
-        <div className="text-xl font-bold mb-2 md:mb-0">
-          <Link to="/">BE MEN</Link>
-        </div>
-
-        {/* Search */}
-        <div className="flex items-center w-full md:w-auto md:absolute md:left-1/2 md:translate-x-[-50%] mb-2 md:mb-0">
-          <input
-            type="text"
-            placeholder="Search"
-            className="flex-grow md:w-60 px-4 py-1 rounded-full bg-white text-black border border-gray-400"
-            value={srch}
-            onChange={(e) => setsearch(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="ml-2 p-1.5 flex items-center justify-center rounded-full text-black cursor-pointer"
-            onClick={handleSearch}
-          >
-            <MagnifyingGlassIcon className="h-5 w-5" />
-          </button>
-        </div>
-
-        {/* Main Links Area */}
-        <div className="flex justify-between w-full md:w-auto items-center md:space-x-6 flex-wrap">
-          {/* Left: Wishlist + Cart */}
-          <div className="flex items-center space-x-4 order-2 md:order-2">
-
-
-            {/* Products */}
-            {location.pathname !== "/home" && (
-              <Link to="/home" className="hover:text-gray-600 md:mr-4">
-                Products
+      <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-gray-900 to-black text-white shadow-lg border-b border-gray-800">
+        <div className="max-w-1xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            {/* Brand */}
+            <div className="flex items-center">
+              <Link
+                to="/"
+                className="text-2xl font-bold tracking-wider hover:text-gray-300 transition-colors"
+              >
+                BE MEN
               </Link>
-            )}
-
-            {/* Wishlist */}
-            <div className="relative">
-              <Link to={user ? "/wishlist" : "/login"} className="hover:text-gray-600">
-                ❤️
-              </Link>
-              {wishlist.length > 0 && (
-                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-                  {wishlist.length}
-                </span>
-              )}
             </div>
 
-            {/* Cart */}
-            <div className="relative">
-              <Link to={user ? "/cart" : "/login"} className="hover:text-gray-600">
-                🛒
+            {/* Navigation Links */}
+            <div className="flex items-center space-x-6">
+              {/* Products */}
+              {location.pathname !== "/home" && (
+                <Link
+                  to="/home"
+                  className="flex items-center gap-2 hover:text-gray-300 transition-colors group"
+                >
+                  <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <span className="hidden sm:inline font-medium">Products</span>
+                </Link>
+              )}
+
+              {/* Wishlist */}
+              <Link
+                to={user ? "/wishlist" : "/login"}
+                className="relative flex items-center gap-2 hover:text-gray-300 transition-colors group"
+              >
+                <div className="relative">
+                  <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  {/* {wishlist.length > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full font-semibold shadow-lg">
+                      {wishlist.length}
+                    </span>
+                  )} */}
+                </div>
+                <span className="hidden sm:inline font-medium">Wishlist</span>
               </Link>
-              {cart.length > 0 && (
-                <span className="absolute -top-1 -right-2 bg-blue-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-                  {cart.length}
-                </span>
+
+              {/* Cart */}
+              <Link
+                to={user ? "/cart" : "/login"}
+                className="relative flex items-center gap-2 hover:text-gray-300 transition-colors group"
+              >
+                <div className="relative">
+                  <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  {/* {cart.length > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full font-semibold shadow-lg">
+                      {cart.length}
+                    </span>
+                  )} */}
+                </div>
+                <span className="hidden sm:inline font-medium">Cart</span>
+              </Link>
+
+              {/* Divider */}
+              <div className="hidden md:block w-px h-6 bg-gray-700"></div>
+
+              {/* About Us */}
+              <Link
+                to="/about"
+                className="flex items-center gap-2 hover:text-gray-300 transition-colors group"
+              >
+                <Info className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span className="hidden sm:inline font-medium">About</span>
+              </Link>
+
+              {/* Profile or Login */}
+              {user ? (
+                <button
+                  onClick={() => setShowProfile(true)}
+                  className="flex items-center gap-2 hover:text-gray-300 transition-colors group"
+                >
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                    <User className="w-5 h-5" />
+                  </div>
+                  <span className="hidden md:inline font-medium">Profile</span>
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  className="flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-200 transition-colors shadow-md"
+                >
+                  <User className="w-4 h-4" />
+                  <span>Login</span>
+                </Link>
               )}
             </div>
-          </div>
-
-          {/* Right: Profile + About */}
-          <div className="flex items-center space-x-4 order-3 md:order-3 ml-auto">
-            {/* Profile or Login */}
-            {user ? (
-              <button onClick={() => setShowProfile(true)} className="hover:text-gray-600">
-                👤
-              </button>
-            ) : (
-              <Link to="/login" className="hover:text-gray-600">
-                Login
-              </Link>
-            )}
-
-            {/* About us */}
-            <Link to="/about" className="hover:text-gray-600">
-              About us
-            </Link>
           </div>
         </div>
       </nav>
 
-      {showProfile && <Profile onClose={() => setShowProfile(false)} profileRef={profileRef} />}
+      {showProfile && (
+        <Profile onClose={() => setShowProfile(false)} profileRef={profileRef} />
+      )}
     </>
   );
 }
